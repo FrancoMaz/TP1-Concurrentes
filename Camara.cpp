@@ -5,16 +5,14 @@
 #include "Camara.h"
 #include "Imagen.h"
 
-int pixelesImagenes;
-Imagen *imagen;
+Camara::Camara() {
 
-Camara::Camara(int pixelesPorFila) {
-    pixelesImagenes = pixelesPorFila;
 }
 
-void Camara::generarImagen() {
-    imagen = new Imagen(pixelesImagenes);
+Imagen *Camara::generarImagen(int pixelesPorFila) {
+    imagen = new Imagen(pixelesPorFila * pixelesPorFila);
     imagen->generarValores();
+    return imagen;
 }
 
 void Camara::ajustarImagen() {

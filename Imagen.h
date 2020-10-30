@@ -13,11 +13,14 @@ using namespace std;
 class Imagen {
 
 private:
+
     vector<Pixel> pixeles;
-    int pixelesPorFila;
+    int pixelesImagenes;
+    bool procesada;
 
 public:
-    explicit Imagen(int pixeles);
+
+    explicit Imagen(int pixelesImagenes);
 
     static int calcularRandom(int numerosPosibles);
 

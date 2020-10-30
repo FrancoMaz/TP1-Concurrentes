@@ -14,7 +14,7 @@ using namespace std;
 class Aplanador {
 
 public:
-    static Imagen aplanarImagenes(vector<Imagen> imagenes, int pixelesPorFila);
+    static Imagen aplanarImagenes(vector<Imagen*> imagenes, int pixelesPorFila);
 };
 
 

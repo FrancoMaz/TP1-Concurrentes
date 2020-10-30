@@ -9,17 +9,20 @@
 
 class Camara {
 
+private:
+    Imagen *imagen;
+
 public:
-    explicit Camara(int pixeles);
 
-    static void generarImagen();
+    explicit Camara();
 
-    static void ajustarImagen();
+    Imagen *generarImagen(int pixelesPorFila);
 
-    static void mostrarImagen();
+    void ajustarImagen();
 
-    static Imagen getImagen();
+    void mostrarImagen();
+
+    Imagen getImagen();
 };
-
 
 #endif //CONCURRENTES_CAMARA_H

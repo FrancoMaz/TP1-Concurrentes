@@ -68,10 +68,10 @@ RM = /home/francomazzoni/Descargas/CLion-2020.2.4/clion-2020.2.4/bin/cmake/linux
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/francomazzoni/CLionProjects/Concurrentes
+CMAKE_SOURCE_DIR = /home/francomazzoni/TP1-Concurrentes
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug
+CMAKE_BINARY_DIR = /home/francomazzoni/TP1-Concurrentes/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/CMakeFiles /home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/francomazzoni/TP1-Concurrentes/cmake-build-debug/CMakeFiles /home/francomazzoni/TP1-Concurrentes/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/francomazzoni/TP1-Concurrentes/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -142,6 +142,33 @@ Concurrentes: cmake_check_build_system
 Concurrentes/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/build
 .PHONY : Concurrentes/fast
+
+Ajustador.o: Ajustador.cpp.o
+
+.PHONY : Ajustador.o
+
+# target to build an object file
+Ajustador.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Ajustador.cpp.o
+.PHONY : Ajustador.cpp.o
+
+Ajustador.i: Ajustador.cpp.i
+
+.PHONY : Ajustador.i
+
+# target to preprocess a source file
+Ajustador.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Ajustador.cpp.i
+.PHONY : Ajustador.cpp.i
+
+Ajustador.s: Ajustador.cpp.s
+
+.PHONY : Ajustador.s
+
+# target to generate assembly for a file
+Ajustador.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Ajustador.cpp.s
+.PHONY : Ajustador.cpp.s
 
 Aplanador.o: Aplanador.cpp.o
 
@@ -278,6 +305,33 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+senial/SignalHandler.o: senial/SignalHandler.cpp.o
+
+.PHONY : senial/SignalHandler.o
+
+# target to build an object file
+senial/SignalHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/senial/SignalHandler.cpp.o
+.PHONY : senial/SignalHandler.cpp.o
+
+senial/SignalHandler.i: senial/SignalHandler.cpp.i
+
+.PHONY : senial/SignalHandler.i
+
+# target to preprocess a source file
+senial/SignalHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/senial/SignalHandler.cpp.i
+.PHONY : senial/SignalHandler.cpp.i
+
+senial/SignalHandler.s: senial/SignalHandler.cpp.s
+
+.PHONY : senial/SignalHandler.s
+
+# target to generate assembly for a file
+senial/SignalHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/senial/SignalHandler.cpp.s
+.PHONY : senial/SignalHandler.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -287,6 +341,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Concurrentes"
+	@echo "... Ajustador.o"
+	@echo "... Ajustador.i"
+	@echo "... Ajustador.s"
 	@echo "... Aplanador.o"
 	@echo "... Aplanador.i"
 	@echo "... Aplanador.s"
@@ -302,6 +359,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... senial/SignalHandler.o"
+	@echo "... senial/SignalHandler.i"
+	@echo "... senial/SignalHandler.s"
 .PHONY : help
 
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/francomazzoni/CLionProjects/Concurrentes
+# Install script for directory: /home/francomazzoni/TP1-Concurrentes
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
