@@ -6,23 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/francomazzoni/TP1-Concurrentes/Ajustador.cpp
-Ajustador.h
 /home/francomazzoni/TP1-Concurrentes/Ajustador.h
 Imagen.h
 /home/francomazzoni/TP1-Concurrentes/Imagen.h
-
-/home/francomazzoni/TP1-Concurrentes/Ajustador.h
-Imagen.h
-/home/francomazzoni/TP1-Concurrentes/Imagen.h
-
-/home/francomazzoni/TP1-Concurrentes/Aplanador.cpp
-Aplanador.h
-/home/francomazzoni/TP1-Concurrentes/Aplanador.h
-iostream
--
-vector
--
 
 /home/francomazzoni/TP1-Concurrentes/Aplanador.h
 Imagen.h
@@ -30,21 +16,7 @@ Imagen.h
 vector
 -
 
-/home/francomazzoni/TP1-Concurrentes/Camara.cpp
-Camara.h
 /home/francomazzoni/TP1-Concurrentes/Camara.h
-Imagen.h
-/home/francomazzoni/TP1-Concurrentes/Imagen.h
-
-/home/francomazzoni/TP1-Concurrentes/Camara.h
-Imagen.h
-/home/francomazzoni/TP1-Concurrentes/Imagen.h
-
-/home/francomazzoni/TP1-Concurrentes/Imagen.cpp
-cstdlib
--
-iostream
--
 Imagen.h
 /home/francomazzoni/TP1-Concurrentes/Imagen.h
 
@@ -54,9 +26,21 @@ Pixel.h
 vector
 -
 
-/home/francomazzoni/TP1-Concurrentes/Pixel.cpp
-Pixel.h
-/home/francomazzoni/TP1-Concurrentes/Pixel.h
+/home/francomazzoni/TP1-Concurrentes/MemoriaCompartida.h
+sys/types.h
+-
+sys/ipc.h
+-
+sys/shm.h
+-
+string
+-
+cstring
+-
+iostream
+-
+cerrno
+-
 
 /home/francomazzoni/TP1-Concurrentes/Pixel.h
 string
@@ -77,7 +61,11 @@ senial/SIGINT_handler.h
 /home/francomazzoni/TP1-Concurrentes/senial/SIGINT_handler.h
 senial/SignalHandler.h
 /home/francomazzoni/TP1-Concurrentes/senial/SignalHandler.h
+MemoriaCompartida.h
+/home/francomazzoni/TP1-Concurrentes/MemoriaCompartida.h
 unistd.h
+-
+wait.h
 -
 
 /home/francomazzoni/TP1-Concurrentes/senial/EventHandler.h
@@ -89,10 +77,6 @@ cassert
 -
 EventHandler.h
 /home/francomazzoni/TP1-Concurrentes/senial/EventHandler.h
-
-/home/francomazzoni/TP1-Concurrentes/senial/SignalHandler.cpp
-SignalHandler.h
-/home/francomazzoni/TP1-Concurrentes/senial/SignalHandler.h
 
 /home/francomazzoni/TP1-Concurrentes/senial/SignalHandler.h
 csignal

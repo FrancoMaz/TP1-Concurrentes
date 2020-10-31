@@ -5,12 +5,13 @@
 #include "SignalHandler.h"
 
 SignalHandler* SignalHandler::instance = nullptr;
-EventHandler* SignalHandler::signal_handlers [NSIG];
+EventHandler* SignalHandler::signal_handlers[NSIG];
 
 SignalHandler::SignalHandler() = default;
 
 void SignalHandler::dispatcher(int signum) {
-
+    if (SignalHandler::signal_handlers[signum] != nullptr)
+        SignalHandler::signal_handlers[signum]->handleSignal(signum);
 }
 
 SignalHandler *SignalHandler::getInstance() {
@@ -33,9 +34,9 @@ EventHandler *SignalHandler::registrarHandler(int signum, EventHandler *eh) {
     struct sigaction sa{} ;
     memset(&sa, 0, sizeof(sa));
     sa.sa_handler = SignalHandler::dispatcher;
-    sigemptyset (&sa.sa_mask);
-    sigaddset (&sa.sa_mask, signum);
-    sigaction (signum, &sa,nullptr);
+    sigemptyset(&sa.sa_mask);
+    sigaddset(&sa.sa_mask, signum);
+    sigaction(signum, &sa,nullptr);
     return old_eh ;
 }
 

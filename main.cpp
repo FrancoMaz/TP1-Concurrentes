@@ -5,7 +5,9 @@
 #include "Ajustador.h"
 #include "senial/SIGINT_handler.h"
 #include "senial/SignalHandler.h"
+#include "MemoriaCompartida.h"
 #include <unistd.h>
+#include <wait.h>
 
 using namespace std;
 
@@ -23,15 +25,34 @@ vector<Imagen*> generarImagenes(int cantidadCamaras, int pixelesPorFila) {
     return imagenes;
 };
 
-void ajustarImagenes(vector<Imagen*> imagenes) {
+void ajustarImagenes(vector<Imagen*> imagenes, int pixelesPorFila, pid_t ids[]) {
 
-    pid_t ids[imagenes.size()];
+    string archivo = "/bin/ls";
+
     auto *ajustador = new Ajustador(10);
+
+    int arraySize = pixelesPorFila * pixelesPorFila * imagenes.size() + 1;
+
+    int* imagenesSerializadas = new int[arraySize];
+    imagenesSerializadas[0] = arraySize;
+
+    int position = 1;
+    while (position < arraySize) {
+        for (auto & imagen : imagenes) {
+            for (int j = 0; j < pixelesPorFila * pixelesPorFila; j++) {
+                imagenesSerializadas[position] = imagen->getPixel(j);
+                position++;
+            }
+        }
+    }
+
+    MemoriaCompartida<int*> buffer(archivo,'A');
+    buffer.escribir(imagenesSerializadas);
 
     for (int i = 0; i < imagenes.size(); i++) {
         ids[i] = fork();
         if (ids[i] == 0) {
-            cout << "Proceso hijo " << i << endl;
+            cout << "Proceso hijo " << i+1 << endl;
             ajustador->ajustarImagen(imagenes[i]);
             exit(0);
         }
@@ -49,19 +70,15 @@ int main() {
     cin >> pixelesPorFila;
 
     vector<Imagen*> imagenes = generarImagenes(cantidadCamaras, pixelesPorFila);
+    pid_t ids[imagenes.size()];
 
     SIGINT_Handler sigchld_handler;
     SignalHandler::getInstance()->registrarHandler(SIGCHLD, &sigchld_handler);
 
-    ajustarImagenes(imagenes);
+    ajustarImagenes(imagenes, pixelesPorFila, ids);
 
-    int contador = 1;
-
-    while (sigchld_handler.getGracefulQuit() == 0 && contador < imagenes.size()) {
-        if (sigchld_handler.getGracefulQuit() == 0) {
-            contador++;
-            cout << contador << endl;
-        }
+    for(int i = 0; i < imagenes.size(); i++) {
+        waitpid(ids[i], nullptr, 0);
     }
 
     SignalHandler::destruir();

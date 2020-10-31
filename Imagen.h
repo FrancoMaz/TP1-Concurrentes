@@ -16,7 +16,6 @@ private:
 
     vector<Pixel> pixeles;
     int pixelesImagenes;
-    bool procesada;
 
 public:
 
@@ -33,6 +32,8 @@ public:
     void agregarPixel(int valor);
 
     void generarValores();
+
+    int *serializar();
 };
 
 

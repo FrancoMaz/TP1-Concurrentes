@@ -18,11 +18,17 @@ public:
     ~SIGINT_Handler() override = default;
 
     int handleSignal(int signum) override {
+        assert(signum == SIGCHLD);
         this->gracefulQuit = 1;
         return 0;
     }
+
     sig_atomic_t getGracefulQuit() const {
         return this->gracefulQuit;
+    }
+
+    void setGracefulQuit(sig_atomic_t gracefulQuit) {
+        this->gracefulQuit = gracefulQuit;
     }
 };
 

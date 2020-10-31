@@ -27,6 +27,7 @@ CMakeFiles/Concurrentes.dir/main.cpp.o: ../Ajustador.h
 CMakeFiles/Concurrentes.dir/main.cpp.o: ../Aplanador.h
 CMakeFiles/Concurrentes.dir/main.cpp.o: ../Camara.h
 CMakeFiles/Concurrentes.dir/main.cpp.o: ../Imagen.h
+CMakeFiles/Concurrentes.dir/main.cpp.o: ../MemoriaCompartida.h
 CMakeFiles/Concurrentes.dir/main.cpp.o: ../Pixel.h
 CMakeFiles/Concurrentes.dir/main.cpp.o: ../main.cpp
 CMakeFiles/Concurrentes.dir/main.cpp.o: ../senial/EventHandler.h

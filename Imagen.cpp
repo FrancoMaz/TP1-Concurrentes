@@ -10,7 +10,6 @@ using namespace std;
 
 Imagen::Imagen(int pixelesImagenes) {
     this->pixelesImagenes = pixelesImagenes;
-    this->procesada = false;
 }
 
 void Imagen::generarValores() {
@@ -23,7 +22,6 @@ void Imagen::ajustar(int valor) {
     for (auto & pixel : this->pixeles){
         pixel.ajustar(calcularRandom(valor));
     }
-    this->procesada = true;
 }
 
 int Imagen::getPixel(int posicion) {
@@ -45,4 +43,12 @@ void Imagen::mostrar() {
 
 void Imagen::agregarPixel(int valor) {
     pixeles.emplace_back(valor);
+}
+
+int *Imagen::serializar() {
+    int imagenes[pixeles.size()];
+    for (auto & pixel : pixeles) {
+        pixel.getValor();
+    }
+    return imagenes;
 }
