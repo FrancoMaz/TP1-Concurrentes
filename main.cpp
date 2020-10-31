@@ -67,11 +67,10 @@ void ajustarImagenes(const vector<Imagen*> imagenes, int pixelesPorFila) {
     string archivo = "/bin/ls";
 
     int arraySize = pixelesPorFila * pixelesPorFila * imagenes.size();
-    int memory = 0644;
 
     auto *ajustador = new Ajustador(10);
 
-    MemoriaCompartida<int*> buffer(archivo,'A', arraySize, memory|IPC_CREAT);
+    MemoriaCompartida<int*> buffer(archivo,'A', arraySize);
     buffer.escribir(serializarImagenes(imagenes, pixelesPorFila, arraySize, 0));
 
     pid_t ids[imagenes.size()];
@@ -80,9 +79,7 @@ void ajustarImagenes(const vector<Imagen*> imagenes, int pixelesPorFila) {
         ids[i] = fork();
         if (ids[i] == 0) {
             try {
-                memory += sizeof(int) * pixelesPorFila;
-                cout << memory << endl;
-                MemoriaCompartida<int*> bufferHijo(archivo, 'A', pixelesPorFila, memory|IPC_CREAT);
+                MemoriaCompartida<int*> bufferHijo(archivo, 'A', arraySize);
                 int *resultado = bufferHijo.leer();
                 vector<Imagen*> imagenesDeserializadas = deserializarImagenes(resultado, pixelesPorFila, imagenes.size(), arraySize, i + 1);
                 ajustador->ajustarImagen(imagenesDeserializadas[i]);

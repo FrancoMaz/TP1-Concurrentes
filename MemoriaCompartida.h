@@ -25,7 +25,7 @@ private:
 
 public:
     MemoriaCompartida();
-    MemoriaCompartida (const std::string& archivo,char letra, int arraySize, int memory);
+    MemoriaCompartida (const std::string& archivo,char letra, int arraySize);
     ~MemoriaCompartida ();
     MemoriaCompartida<T>& operator= ( const MemoriaCompartida& origen );
     void escribir ( const T& dato );
@@ -35,11 +35,11 @@ public:
 template <class T> MemoriaCompartida<T>::MemoriaCompartida ():shmId(0),ptrDatos(NULL) {
 }
 
-template <class T> MemoriaCompartida<T>::MemoriaCompartida (const string& archivo,const char letra, int size, int memory):shmId(0),ptrDatos(NULL) {
+template <class T> MemoriaCompartida<T>::MemoriaCompartida (const string& archivo,const char letra, int size):shmId(0),ptrDatos(NULL) {
     key_t clave = ftok ( archivo.c_str(),letra );
 
     if ( clave > 0 ) {
-        this->shmId = shmget ( clave,sizeof(int) * size, memory);
+        this->shmId = shmget ( clave,sizeof(int) * size,0644|IPC_CREAT );
 
         if ( this->shmId > 0 ) {
             void* tmpPtr = shmat ( this->shmId,NULL,0 );
