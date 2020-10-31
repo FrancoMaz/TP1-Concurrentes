@@ -32,23 +32,19 @@ int Imagen::calcularRandom(int numerosPosibles) {
     return rand() % numerosPosibles + 1;
 }
 
-void Imagen::mostrar() {
+string Imagen::mostrar() {
 
+    string str;
     for (auto & pixel : this->pixeles){
-        cout << pixel.getValor() << "   ";
+        str += to_string(pixel.getValor());
+        str += " ";
     }
 
-    cout << endl;
+    return str;
 }
 
 void Imagen::agregarPixel(int valor) {
     pixeles.emplace_back(valor);
 }
 
-int *Imagen::serializar() {
-    int imagenes[pixeles.size()];
-    for (auto & pixel : pixeles) {
-        pixel.getValor();
-    }
-    return imagenes;
-}
+Imagen::~Imagen() = default;

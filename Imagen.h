@@ -20,14 +20,14 @@ private:
 public:
 
     explicit Imagen(int pixelesImagenes);
-
+    ~Imagen();
     static int calcularRandom(int numerosPosibles);
 
     int  getPixel(int posicion);
 
     void ajustar(int valor);
 
-    void mostrar();
+    string mostrar();
 
     void agregarPixel(int valor);
 

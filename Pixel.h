@@ -15,7 +15,7 @@ private:
 
 public:
     explicit Pixel(int valor);
-
+    ~Pixel();
     void ajustar(int valor);
 
     int getValor() const;

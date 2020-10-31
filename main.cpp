@@ -25,20 +25,13 @@ vector<Imagen*> generarImagenes(int cantidadCamaras, int pixelesPorFila) {
     return imagenes;
 };
 
-void ajustarImagenes(vector<Imagen*> imagenes, int pixelesPorFila, pid_t ids[]) {
-
-    string archivo = "/bin/ls";
-
-    auto *ajustador = new Ajustador(10);
-
-    int arraySize = pixelesPorFila * pixelesPorFila * imagenes.size() + 1;
-
+int* serializarImagenes(vector<Imagen*> imagenes, int pixelesPorFila, int arraySize, int proceso) {
     int* imagenesSerializadas = new int[arraySize];
-    imagenesSerializadas[0] = arraySize;
 
-    int position = 1;
+    int position = 0;
     while (position < arraySize) {
         for (auto & imagen : imagenes) {
+            cout << "Proceso " << proceso << " serializa imagen " << imagen->mostrar() << endl;
             for (int j = 0; j < pixelesPorFila * pixelesPorFila; j++) {
                 imagenesSerializadas[position] = imagen->getPixel(j);
                 position++;
@@ -46,17 +39,66 @@ void ajustarImagenes(vector<Imagen*> imagenes, int pixelesPorFila, pid_t ids[]) 
         }
     }
 
-    MemoriaCompartida<int*> buffer(archivo,'A');
-    buffer.escribir(imagenesSerializadas);
+    return imagenesSerializadas;
+
+}
+
+vector<Imagen*> deserializarImagenes(int* imagenesASerializar, int pixelesPorFila, int cantidadImagenes, int arraySize, int proceso) {
+    vector<Imagen*> imagenesDeserializadas;
+
+    int position = 0;
+    while (position < arraySize) {
+        for (int i = 0; i < cantidadImagenes; i++) {
+            auto *imagen = new Imagen(pixelesPorFila);
+            for (int j = 0; j < pixelesPorFila * pixelesPorFila; j++) {
+                imagen->agregarPixel(imagenesASerializar[position]);
+                position++;
+            }
+            cout << "Proceso " << proceso << " deserializa imagen " << imagen->mostrar() << endl;
+            imagenesDeserializadas.push_back(imagen);
+        }
+    }
+
+    return imagenesDeserializadas;
+}
+
+void ajustarImagenes(const vector<Imagen*>& imagenes, int pixelesPorFila) {
+
+    string archivo = "/bin/ls";
+
+    int arraySize = pixelesPorFila * pixelesPorFila * imagenes.size();
+
+    auto *ajustador = new Ajustador(10);
+
+    MemoriaCompartida<int*> buffer(archivo,'A', arraySize);
+    buffer.escribir(serializarImagenes(imagenes, pixelesPorFila, arraySize, 0));
+
+    pid_t ids[imagenes.size()];
 
     for (int i = 0; i < imagenes.size(); i++) {
         ids[i] = fork();
         if (ids[i] == 0) {
-            cout << "Proceso hijo " << i+1 << endl;
-            ajustador->ajustarImagen(imagenes[i]);
+            try {
+                MemoriaCompartida<int *> bufferHijo(archivo, 'A', arraySize);
+                int *resultado = bufferHijo.leer();
+                vector<Imagen *> imagenesDeserializadas = deserializarImagenes(resultado, pixelesPorFila, imagenes.size(), arraySize, i + 1);
+                ajustador->ajustarImagen(imagenesDeserializadas[i]);
+                bufferHijo.escribir(serializarImagenes(imagenesDeserializadas, pixelesPorFila, arraySize, i + 1));
+
+            } catch(string& message) {
+                cerr << message << endl;
+            }
             exit(0);
         }
     }
+
+    for(int i = 0; i < imagenes.size(); i++) {
+        waitpid(ids[i], nullptr, 0);
+    }
+
+    int* resultado = buffer.leer();
+    vector<Imagen*> imagenesDeserializadas = deserializarImagenes(resultado, pixelesPorFila, imagenes.size(), arraySize, 1000);
+
 }
 
 int main() {
@@ -70,18 +112,13 @@ int main() {
     cin >> pixelesPorFila;
 
     vector<Imagen*> imagenes = generarImagenes(cantidadCamaras, pixelesPorFila);
-    pid_t ids[imagenes.size()];
 
-    SIGINT_Handler sigchld_handler;
-    SignalHandler::getInstance()->registrarHandler(SIGCHLD, &sigchld_handler);
+    /*SIGINT_Handler sigchld_handler;
+    SignalHandler::getInstance()->registrarHandler(SIGCHLD, &sigchld_handler);*/
 
-    ajustarImagenes(imagenes, pixelesPorFila, ids);
+    ajustarImagenes(imagenes, pixelesPorFila);
 
-    for(int i = 0; i < imagenes.size(); i++) {
-        waitpid(ids[i], nullptr, 0);
-    }
-
-    SignalHandler::destruir();
+    //SignalHandler::destruir();
 
     Aplanador::aplanarImagenes(imagenes, pixelesPorFila);
 
