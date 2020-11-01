@@ -43,23 +43,23 @@ int* serializarImagenes(vector<Imagen*> imagenes, int pixelesPorFila, int arrayS
 
 }
 
-vector<Imagen*> deserializarImagenes(int* imagenesASerializar, int pixelesPorFila, int cantidadImagenes, int arraySize, int proceso) {
-    vector<Imagen*> imagenesDeserializadas;
+Imagen* deserializarImagen(int* imagenesASerializar, int pixelesPorFila) {
+    auto* imagen = new Imagen(pixelesPorFila);
 
-    int position = 0;
-    while (position < arraySize) {
-        for (int i = 0; i < cantidadImagenes; i++) {
-            auto *imagen = new Imagen(pixelesPorFila);
-            for (int j = 0; j < pixelesPorFila * pixelesPorFila; j++) {
-                imagen->agregarPixel(imagenesASerializar[position]);
-                position++;
-            }
-            cout << "Proceso " << proceso << " deserializa imagen " << imagen->mostrar() << endl;
-            imagenesDeserializadas.push_back(imagen);
-        }
+    for (int i = 0; i < pixelesPorFila * pixelesPorFila; i++) {
+        imagen->agregarPixel(imagenesASerializar[i]);
+
     }
+    return imagen;
+}
 
-    return imagenesDeserializadas;
+int* serializarImagen(Imagen* imagen, int pixelesPorFila) {
+    int* imagenADevolver = new int[pixelesPorFila];
+
+    for (int i = 0; i < pixelesPorFila * pixelesPorFila; i++) {
+        imagenADevolver[i] = imagen->getPixel(i);
+    }
+    return imagenADevolver;
 }
 
 void ajustarImagenes(const vector<Imagen*> imagenes, int pixelesPorFila) {
@@ -70,8 +70,12 @@ void ajustarImagenes(const vector<Imagen*> imagenes, int pixelesPorFila) {
 
     auto *ajustador = new Ajustador(10);
 
-    MemoriaCompartida<int*> buffer(archivo,'A', arraySize);
-    buffer.escribir(serializarImagenes(imagenes, pixelesPorFila, arraySize, 0));
+    MemoriaCompartida buffer(archivo,'A', arraySize);
+    buffer.escribir(serializarImagenes(imagenes, pixelesPorFila, arraySize, 0), 0, arraySize);
+    /*int *resultado = buffer.leer(0, arraySize);
+    for (int j = 0; j < arraySize; j++) {
+        cout << resultado[j] << endl;
+    }*/
 
     pid_t ids[imagenes.size()];
 
@@ -79,11 +83,12 @@ void ajustarImagenes(const vector<Imagen*> imagenes, int pixelesPorFila) {
         ids[i] = fork();
         if (ids[i] == 0) {
             try {
-                MemoriaCompartida<int*> bufferHijo(archivo, 'A', arraySize);
-                int *resultado = bufferHijo.leer();
-                vector<Imagen*> imagenesDeserializadas = deserializarImagenes(resultado, pixelesPorFila, imagenes.size(), arraySize, i + 1);
-                ajustador->ajustarImagen(imagenesDeserializadas[i]);
-                bufferHijo.escribir(serializarImagenes(imagenesDeserializadas, pixelesPorFila, arraySize, i + 1));
+                int offset = i * pixelesPorFila * pixelesPorFila;
+                MemoriaCompartida bufferHijo(archivo, 'A', arraySize);
+                int *resultado = bufferHijo.leer(offset, pixelesPorFila * pixelesPorFila);
+                Imagen* imagenDeserializada = deserializarImagen(resultado, pixelesPorFila);
+                ajustador->ajustarImagen(imagenDeserializada);
+                bufferHijo.escribir(serializarImagen(imagenDeserializada, pixelesPorFila), offset, pixelesPorFila * pixelesPorFila);
 
             } catch(string& message) {
                 cerr << message << endl;
@@ -96,8 +101,10 @@ void ajustarImagenes(const vector<Imagen*> imagenes, int pixelesPorFila) {
         waitpid(ids[i], nullptr, 0);
     }
 
-    int* resultado = buffer.leer();
-    vector<Imagen*> imagenesDeserializadas = deserializarImagenes(resultado, pixelesPorFila, imagenes.size(), arraySize, 1000);
+    int *resultado = buffer.leer(0, arraySize);
+    for (int j = 0; j < arraySize; j++) {
+        cout << resultado[j] << endl;
+    }
 
 }
 

@@ -15,11 +15,11 @@
 
 using namespace std;
 
-template <class T> class MemoriaCompartida {
+class MemoriaCompartida {
 
 private:
     int	shmId;
-    T*	ptrDatos;
+    int* ptrDatos;
 
     int	cantidadProcesosAdosados() const;
 
@@ -27,15 +27,15 @@ public:
     MemoriaCompartida();
     MemoriaCompartida (const std::string& archivo,char letra, int arraySize);
     ~MemoriaCompartida ();
-    MemoriaCompartida<T>& operator= ( const MemoriaCompartida& origen );
-    void escribir ( const T& dato );
-    T leer () const;
+    MemoriaCompartida& operator= ( const MemoriaCompartida& origen );
+    void escribir ( const int* dato, int offset, int pixelesPorFila );
+    int* leer (int offset, int pixelesPorFila) const;
 };
 
-template <class T> MemoriaCompartida<T>::MemoriaCompartida ():shmId(0),ptrDatos(NULL) {
+MemoriaCompartida::MemoriaCompartida ():shmId(0),ptrDatos(NULL) {
 }
 
-template <class T> MemoriaCompartida<T>::MemoriaCompartida (const string& archivo,const char letra, int size):shmId(0),ptrDatos(NULL) {
+MemoriaCompartida::MemoriaCompartida (const string& archivo,const char letra, int size):shmId(0),ptrDatos(NULL) {
     key_t clave = ftok ( archivo.c_str(),letra );
 
     if ( clave > 0 ) {
@@ -44,7 +44,7 @@ template <class T> MemoriaCompartida<T>::MemoriaCompartida (const string& archiv
         if ( this->shmId > 0 ) {
             void* tmpPtr = shmat ( this->shmId,NULL,0 );
             if ( tmpPtr != (void*) -1 ) {
-                this->ptrDatos = static_cast<T*> (tmpPtr);
+                this->ptrDatos = (int*) tmpPtr;
             } else {
                 string mensaje = string("Error en shmat(): ") + string(strerror(errno));
                 throw mensaje;
@@ -59,7 +59,7 @@ template <class T> MemoriaCompartida<T>::MemoriaCompartida (const string& archiv
     }
 }
 
-template <class T> MemoriaCompartida<T>::~MemoriaCompartida () {
+MemoriaCompartida::~MemoriaCompartida () {
     int errorDt = shmdt ( static_cast<void*> (this->ptrDatos) );
 
     if ( errorDt != -1 ) {
@@ -72,12 +72,12 @@ template <class T> MemoriaCompartida<T>::~MemoriaCompartida () {
     }
 }
 
-template <class T> MemoriaCompartida<T>& MemoriaCompartida<T>::operator= ( const MemoriaCompartida& origen ) {
+MemoriaCompartida& MemoriaCompartida::operator= ( const MemoriaCompartida& origen ) {
     this->shmId = origen.shmId;
     void* tmpPtr = shmat ( this->shmId,NULL,0 );
 
     if ( tmpPtr != (void*) -1 ) {
-        this->ptrDatos = static_cast<T*> (tmpPtr);
+        this->ptrDatos = static_cast<int*> (tmpPtr);
     } else {
         string mensaje = string("Error en shmat(): ") + string(strerror(errno));
         throw mensaje;
@@ -86,15 +86,26 @@ template <class T> MemoriaCompartida<T>& MemoriaCompartida<T>::operator= ( const
     return *this;
 }
 
-template <class T> void MemoriaCompartida<T>::escribir (const T& dato) {
-    *(this->ptrDatos) = dato;
+void MemoriaCompartida::escribir (const int* dato, int offset, int arraySize) {
+
+    int contador = 0;
+    for (int i = offset; i < arraySize + offset; i++) {
+        *(this->ptrDatos + i*sizeof(int)) = dato[contador];
+        contador++;
+    }
 }
 
-template <class T> T MemoriaCompartida<T>::leer() const {
-    return *(this->ptrDatos);
+int* MemoriaCompartida::leer(int offset, int arraySize) const {
+    int* aDevolver = new int[arraySize];
+    int contador = 0;
+    for (int i = offset; i < arraySize + offset; i++) {
+        aDevolver[contador] = *(this->ptrDatos + i*sizeof(int));
+        contador++;
+    }
+    return aDevolver;
 }
 
-template <class T> int MemoriaCompartida<T> :: cantidadProcesosAdosados () const {
+int MemoriaCompartida:: cantidadProcesosAdosados () const {
     shmid_ds estado{};
     shmctl ( this->shmId,IPC_STAT,&estado );
     return estado.shm_nattch;
