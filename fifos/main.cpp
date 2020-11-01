@@ -1,11 +1,12 @@
 #include <iostream>
-#include "Camara.h"
-#include "Imagen.h"
-#include "Aplanador.h"
-#include "Ajustador.h"
-#include "senial/SIGINT_handler.h"
-#include "senial/SignalHandler.h"
-#include "MemoriaCompartida.h"
+#include "../Camara.h"
+#include "../Imagen.h"
+#include "../Aplanador.h"
+#include "../Ajustador.h"
+#include "../senial/SIGINT_handler.h"
+#include "../senial/SignalHandler.h"
+#include "FifoEscritura.h"
+#include "FifoLectura.h"
 #include <unistd.h>
 #include <wait.h>
 
@@ -31,7 +32,6 @@ int* serializarImagenes(vector<Imagen*> imagenes, int pixelesPorFila, int arrayS
     int position = 0;
     while (position < arraySize) {
         for (auto & imagen : imagenes) {
-            cout << "Imagen normal: " << imagen->mostrar() << endl;
             for (int j = 0; j < pixelesPorFila * pixelesPorFila; j++) {
                 imagenesSerializadas[position] = imagen->getPixel(j);
                 position++;
@@ -46,14 +46,11 @@ int* serializarImagenes(vector<Imagen*> imagenes, int pixelesPorFila, int arrayS
 vector<Imagen*> deserializarImagenes(int* imagenes, int pixelesPorFila, int arraySize) {
     vector<Imagen*> imagenesDeserializadas;
 
-    int position = 0;
-
     for (int i = 0; i < arraySize; i += (pixelesPorFila * pixelesPorFila)) {
         Imagen *imagen = new Imagen(pixelesPorFila);
         for (int j = i; j < i + (pixelesPorFila * pixelesPorFila); j++) {
             imagen->agregarPixel(imagenes[j]);
         }
-        cout << "Imagen ajustada: " << imagen->mostrar() << endl;
         imagenesDeserializadas.push_back(imagen);
     }
 
@@ -80,43 +77,61 @@ int* serializarImagen(Imagen* imagen, int pixelesPorFila) {
     return imagenADevolver;
 }
 
+
 vector<Imagen*> ajustarImagenes(const vector<Imagen*> imagenes, int pixelesPorFila) {
 
-    string archivo = "/bin/ls";
-
     int arraySize = pixelesPorFila * pixelesPorFila * imagenes.size();
+    int bufferSize = arraySize*sizeof(int);
+    string archivo = "/tmp/archivo_fifo";
+
+    cout << "Imagenes normales" << endl;
+    for (int i = 0; i < imagenes.size(); i++) {
+        cout << "Imagen " << i+1 << ": " << imagenes[i]->mostrar() << endl;
+    }
 
     auto *ajustador = new Ajustador(10);
 
-    MemoriaCompartida buffer(archivo,'A', arraySize);
-    buffer.escribir(serializarImagenes(imagenes, pixelesPorFila, arraySize), 0, arraySize);
-
     pid_t ids[imagenes.size()];
+    vector<Imagen*> imagenesAjustadas;
 
     for (int i = 0; i < imagenes.size(); i++) {
         ids[i] = fork();
         if (ids[i] == 0) {
-            try {
-                int offset = i * pixelesPorFila * pixelesPorFila;
-                MemoriaCompartida bufferHijo(archivo, 'A', arraySize);
-                int *resultado = bufferHijo.leer(offset, pixelesPorFila * pixelesPorFila);
-                Imagen* imagenDeserializada = deserializarImagen(resultado, pixelesPorFila);
-                ajustador->ajustarImagen(imagenDeserializada);
-                bufferHijo.escribir(serializarImagen(imagenDeserializada, pixelesPorFila), offset, pixelesPorFila * pixelesPorFila);
-
-            } catch(string& message) {
-                cerr << message << endl;
-            }
+            FifoLectura canalLectura(archivo);
+            int buffer[pixelesPorFila*pixelesPorFila*sizeof(int)];
+            canalLectura.abrir();
+            canalLectura.leer(static_cast<void*>(buffer), pixelesPorFila*pixelesPorFila*sizeof(int));
+            Imagen* imagen = deserializarImagen(buffer, pixelesPorFila);
+            ajustador->ajustarImagen(imagen);
+            cout << "Proceso " << i << " ajusta a imagen: " << imagen->mostrar() << endl;
+            imagenesAjustadas.push_back(imagen);
+            canalLectura.cerrar();
             exit(0);
+        } else {
+            cout << "Padre " << i << endl;
+            FifoEscritura canalEscritura(archivo);
+            canalEscritura.abrir();
+            //int* imagenesSerializadas = serializarImagenes(imagenes, pixelesPorFila, arraySize);
+            int* imagenSerializada = serializarImagen(imagenes[i], pixelesPorFila);
+            canalEscritura.escribir(static_cast<void*>(imagenSerializada), bufferSize);
+            waitpid(ids[i], nullptr, 0);
+            canalEscritura.cerrar();
+            canalEscritura.eliminar();
         }
     }
 
-    for (int i = 0; i < imagenes.size(); i++) {
+    /*for (int i = 0; i < imagenes.size(); i++) {
         waitpid(ids[i], nullptr, 0);
+    }*/
+
+    cout << endl;
+    cout << imagenesAjustadas.size() << endl;
+    cout << "Imagenes ajustadas" << endl;
+    for (int i = 0; i < imagenesAjustadas.size(); i++) {
+        cout << "Imagen " << i+1 << ": " << imagenesAjustadas[i]->mostrar() << endl;
     }
 
-    int *resultado = buffer.leer(0, arraySize);
-    return deserializarImagenes(resultado, pixelesPorFila, arraySize);
+    return imagenesAjustadas;
 
 }
 
@@ -139,7 +154,7 @@ int main() {
 
     //SignalHandler::destruir();
 
-    Aplanador::aplanarImagenes(imagenesAjustadas, pixelesPorFila);
+    //Aplanador::aplanarImagenes(imagenesAjustadas, pixelesPorFila);
 
     return 0;
 }

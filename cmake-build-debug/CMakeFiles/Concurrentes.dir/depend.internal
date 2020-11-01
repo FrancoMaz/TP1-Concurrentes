@@ -23,14 +23,14 @@ CMakeFiles/Concurrentes.dir/Imagen.cpp.o
 CMakeFiles/Concurrentes.dir/Pixel.cpp.o
  /home/francomazzoni/TP1-Concurrentes/Pixel.cpp
  /home/francomazzoni/TP1-Concurrentes/Pixel.h
-CMakeFiles/Concurrentes.dir/main.cpp.o
+CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o
  /home/francomazzoni/TP1-Concurrentes/Ajustador.h
  /home/francomazzoni/TP1-Concurrentes/Aplanador.h
  /home/francomazzoni/TP1-Concurrentes/Camara.h
  /home/francomazzoni/TP1-Concurrentes/Imagen.h
- /home/francomazzoni/TP1-Concurrentes/MemoriaCompartida.h
  /home/francomazzoni/TP1-Concurrentes/Pixel.h
- /home/francomazzoni/TP1-Concurrentes/main.cpp
+ /home/francomazzoni/TP1-Concurrentes/memoria_compartida/MemoriaCompartida.h
+ /home/francomazzoni/TP1-Concurrentes/memoria_compartida/main.cpp
  /home/francomazzoni/TP1-Concurrentes/senial/EventHandler.h
  /home/francomazzoni/TP1-Concurrentes/senial/SIGINT_handler.h
  /home/francomazzoni/TP1-Concurrentes/senial/SignalHandler.h

@@ -37,6 +37,52 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="ConcurrentesFifos">
+				<Option output="/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/ConcurrentesFifos" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/francomazzoni/TP1-Concurrentes/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 ConcurrentesFifos"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ConcurrentesFifos/fast">
+				<Option output="/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/ConcurrentesFifos" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/francomazzoni/TP1-Concurrentes/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 ConcurrentesFifos/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="Concurrentes">
 				<Option output="/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Concurrentes" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/francomazzoni/TP1-Concurrentes/cmake-build-debug"/>
@@ -85,39 +131,70 @@
 			</Target>
 		</Build>
 		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Ajustador.cpp">
+			<Option target="ConcurrentesFifos"/>
 			<Option target="Concurrentes"/>
 		</Unit>
 		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Ajustador.h">
+			<Option target="ConcurrentesFifos"/>
 			<Option target="Concurrentes"/>
 		</Unit>
 		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Aplanador.cpp">
+			<Option target="ConcurrentesFifos"/>
 			<Option target="Concurrentes"/>
 		</Unit>
 		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Aplanador.h">
+			<Option target="ConcurrentesFifos"/>
 			<Option target="Concurrentes"/>
 		</Unit>
 		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Camara.cpp">
+			<Option target="ConcurrentesFifos"/>
 			<Option target="Concurrentes"/>
 		</Unit>
 		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Camara.h">
+			<Option target="ConcurrentesFifos"/>
 			<Option target="Concurrentes"/>
 		</Unit>
 		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Imagen.cpp">
+			<Option target="ConcurrentesFifos"/>
 			<Option target="Concurrentes"/>
 		</Unit>
 		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Imagen.h">
-			<Option target="Concurrentes"/>
-		</Unit>
-		<Unit filename="/home/francomazzoni/TP1-Concurrentes/MemoriaCompartida.h">
+			<Option target="ConcurrentesFifos"/>
 			<Option target="Concurrentes"/>
 		</Unit>
 		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Pixel.cpp">
+			<Option target="ConcurrentesFifos"/>
 			<Option target="Concurrentes"/>
 		</Unit>
 		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Pixel.h">
+			<Option target="ConcurrentesFifos"/>
 			<Option target="Concurrentes"/>
 		</Unit>
-		<Unit filename="/home/francomazzoni/TP1-Concurrentes/main.cpp">
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/fifos/Fifo.cpp">
+			<Option target="ConcurrentesFifos"/>
+		</Unit>
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/fifos/Fifo.h">
+			<Option target="ConcurrentesFifos"/>
+		</Unit>
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/fifos/FifoEscritura.cpp">
+			<Option target="ConcurrentesFifos"/>
+		</Unit>
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/fifos/FifoEscritura.h">
+			<Option target="ConcurrentesFifos"/>
+		</Unit>
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/fifos/FifoLectura.cpp">
+			<Option target="ConcurrentesFifos"/>
+		</Unit>
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/fifos/FifoLectura.h">
+			<Option target="ConcurrentesFifos"/>
+		</Unit>
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/fifos/main.cpp">
+			<Option target="ConcurrentesFifos"/>
+		</Unit>
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/memoria_compartida/MemoriaCompartida.h">
+			<Option target="Concurrentes"/>
+		</Unit>
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/memoria_compartida/main.cpp">
 			<Option target="Concurrentes"/>
 		</Unit>
 		<Unit filename="/home/francomazzoni/TP1-Concurrentes/senial/EventHandler.h">

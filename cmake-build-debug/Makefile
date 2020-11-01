@@ -131,6 +131,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named ConcurrentesFifos
+
+# Build rule for target.
+ConcurrentesFifos: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ConcurrentesFifos
+.PHONY : ConcurrentesFifos
+
+# fast build rule for target.
+ConcurrentesFifos/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/build
+.PHONY : ConcurrentesFifos/fast
+
+#=============================================================================
 # Target rules for targets named Concurrentes
 
 # Build rule for target.
@@ -149,6 +162,7 @@ Ajustador.o: Ajustador.cpp.o
 
 # target to build an object file
 Ajustador.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/Ajustador.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Ajustador.cpp.o
 .PHONY : Ajustador.cpp.o
 
@@ -158,6 +172,7 @@ Ajustador.i: Ajustador.cpp.i
 
 # target to preprocess a source file
 Ajustador.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/Ajustador.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Ajustador.cpp.i
 .PHONY : Ajustador.cpp.i
 
@@ -167,6 +182,7 @@ Ajustador.s: Ajustador.cpp.s
 
 # target to generate assembly for a file
 Ajustador.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/Ajustador.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Ajustador.cpp.s
 .PHONY : Ajustador.cpp.s
 
@@ -176,6 +192,7 @@ Aplanador.o: Aplanador.cpp.o
 
 # target to build an object file
 Aplanador.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/Aplanador.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Aplanador.cpp.o
 .PHONY : Aplanador.cpp.o
 
@@ -185,6 +202,7 @@ Aplanador.i: Aplanador.cpp.i
 
 # target to preprocess a source file
 Aplanador.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/Aplanador.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Aplanador.cpp.i
 .PHONY : Aplanador.cpp.i
 
@@ -194,6 +212,7 @@ Aplanador.s: Aplanador.cpp.s
 
 # target to generate assembly for a file
 Aplanador.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/Aplanador.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Aplanador.cpp.s
 .PHONY : Aplanador.cpp.s
 
@@ -203,6 +222,7 @@ Camara.o: Camara.cpp.o
 
 # target to build an object file
 Camara.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/Camara.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Camara.cpp.o
 .PHONY : Camara.cpp.o
 
@@ -212,6 +232,7 @@ Camara.i: Camara.cpp.i
 
 # target to preprocess a source file
 Camara.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/Camara.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Camara.cpp.i
 .PHONY : Camara.cpp.i
 
@@ -221,6 +242,7 @@ Camara.s: Camara.cpp.s
 
 # target to generate assembly for a file
 Camara.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/Camara.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Camara.cpp.s
 .PHONY : Camara.cpp.s
 
@@ -230,6 +252,7 @@ Imagen.o: Imagen.cpp.o
 
 # target to build an object file
 Imagen.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/Imagen.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Imagen.cpp.o
 .PHONY : Imagen.cpp.o
 
@@ -239,6 +262,7 @@ Imagen.i: Imagen.cpp.i
 
 # target to preprocess a source file
 Imagen.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/Imagen.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Imagen.cpp.i
 .PHONY : Imagen.cpp.i
 
@@ -248,6 +272,7 @@ Imagen.s: Imagen.cpp.s
 
 # target to generate assembly for a file
 Imagen.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/Imagen.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Imagen.cpp.s
 .PHONY : Imagen.cpp.s
 
@@ -257,6 +282,7 @@ Pixel.o: Pixel.cpp.o
 
 # target to build an object file
 Pixel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/Pixel.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Pixel.cpp.o
 .PHONY : Pixel.cpp.o
 
@@ -266,6 +292,7 @@ Pixel.i: Pixel.cpp.i
 
 # target to preprocess a source file
 Pixel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/Pixel.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Pixel.cpp.i
 .PHONY : Pixel.cpp.i
 
@@ -275,35 +302,144 @@ Pixel.s: Pixel.cpp.s
 
 # target to generate assembly for a file
 Pixel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/Pixel.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Pixel.cpp.s
 .PHONY : Pixel.cpp.s
 
-main.o: main.cpp.o
+fifos/Fifo.o: fifos/Fifo.cpp.o
 
-.PHONY : main.o
+.PHONY : fifos/Fifo.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/main.cpp.o
-.PHONY : main.cpp.o
+fifos/Fifo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/fifos/Fifo.cpp.o
+.PHONY : fifos/Fifo.cpp.o
 
-main.i: main.cpp.i
+fifos/Fifo.i: fifos/Fifo.cpp.i
 
-.PHONY : main.i
+.PHONY : fifos/Fifo.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/main.cpp.i
-.PHONY : main.cpp.i
+fifos/Fifo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/fifos/Fifo.cpp.i
+.PHONY : fifos/Fifo.cpp.i
 
-main.s: main.cpp.s
+fifos/Fifo.s: fifos/Fifo.cpp.s
 
-.PHONY : main.s
+.PHONY : fifos/Fifo.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/main.cpp.s
-.PHONY : main.cpp.s
+fifos/Fifo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/fifos/Fifo.cpp.s
+.PHONY : fifos/Fifo.cpp.s
+
+fifos/FifoEscritura.o: fifos/FifoEscritura.cpp.o
+
+.PHONY : fifos/FifoEscritura.o
+
+# target to build an object file
+fifos/FifoEscritura.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/fifos/FifoEscritura.cpp.o
+.PHONY : fifos/FifoEscritura.cpp.o
+
+fifos/FifoEscritura.i: fifos/FifoEscritura.cpp.i
+
+.PHONY : fifos/FifoEscritura.i
+
+# target to preprocess a source file
+fifos/FifoEscritura.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/fifos/FifoEscritura.cpp.i
+.PHONY : fifos/FifoEscritura.cpp.i
+
+fifos/FifoEscritura.s: fifos/FifoEscritura.cpp.s
+
+.PHONY : fifos/FifoEscritura.s
+
+# target to generate assembly for a file
+fifos/FifoEscritura.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/fifos/FifoEscritura.cpp.s
+.PHONY : fifos/FifoEscritura.cpp.s
+
+fifos/FifoLectura.o: fifos/FifoLectura.cpp.o
+
+.PHONY : fifos/FifoLectura.o
+
+# target to build an object file
+fifos/FifoLectura.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/fifos/FifoLectura.cpp.o
+.PHONY : fifos/FifoLectura.cpp.o
+
+fifos/FifoLectura.i: fifos/FifoLectura.cpp.i
+
+.PHONY : fifos/FifoLectura.i
+
+# target to preprocess a source file
+fifos/FifoLectura.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/fifos/FifoLectura.cpp.i
+.PHONY : fifos/FifoLectura.cpp.i
+
+fifos/FifoLectura.s: fifos/FifoLectura.cpp.s
+
+.PHONY : fifos/FifoLectura.s
+
+# target to generate assembly for a file
+fifos/FifoLectura.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/fifos/FifoLectura.cpp.s
+.PHONY : fifos/FifoLectura.cpp.s
+
+fifos/main.o: fifos/main.cpp.o
+
+.PHONY : fifos/main.o
+
+# target to build an object file
+fifos/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/fifos/main.cpp.o
+.PHONY : fifos/main.cpp.o
+
+fifos/main.i: fifos/main.cpp.i
+
+.PHONY : fifos/main.i
+
+# target to preprocess a source file
+fifos/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/fifos/main.cpp.i
+.PHONY : fifos/main.cpp.i
+
+fifos/main.s: fifos/main.cpp.s
+
+.PHONY : fifos/main.s
+
+# target to generate assembly for a file
+fifos/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/fifos/main.cpp.s
+.PHONY : fifos/main.cpp.s
+
+memoria_compartida/main.o: memoria_compartida/main.cpp.o
+
+.PHONY : memoria_compartida/main.o
+
+# target to build an object file
+memoria_compartida/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o
+.PHONY : memoria_compartida/main.cpp.o
+
+memoria_compartida/main.i: memoria_compartida/main.cpp.i
+
+.PHONY : memoria_compartida/main.i
+
+# target to preprocess a source file
+memoria_compartida/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.i
+.PHONY : memoria_compartida/main.cpp.i
+
+memoria_compartida/main.s: memoria_compartida/main.cpp.s
+
+.PHONY : memoria_compartida/main.s
+
+# target to generate assembly for a file
+memoria_compartida/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.s
+.PHONY : memoria_compartida/main.cpp.s
 
 senial/SignalHandler.o: senial/SignalHandler.cpp.o
 
@@ -341,6 +477,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Concurrentes"
+	@echo "... ConcurrentesFifos"
 	@echo "... Ajustador.o"
 	@echo "... Ajustador.i"
 	@echo "... Ajustador.s"
@@ -356,9 +493,21 @@ help:
 	@echo "... Pixel.o"
 	@echo "... Pixel.i"
 	@echo "... Pixel.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... fifos/Fifo.o"
+	@echo "... fifos/Fifo.i"
+	@echo "... fifos/Fifo.s"
+	@echo "... fifos/FifoEscritura.o"
+	@echo "... fifos/FifoEscritura.i"
+	@echo "... fifos/FifoEscritura.s"
+	@echo "... fifos/FifoLectura.o"
+	@echo "... fifos/FifoLectura.i"
+	@echo "... fifos/FifoLectura.s"
+	@echo "... fifos/main.o"
+	@echo "... fifos/main.i"
+	@echo "... fifos/main.s"
+	@echo "... memoria_compartida/main.o"
+	@echo "... memoria_compartida/main.i"
+	@echo "... memoria_compartida/main.s"
 	@echo "... senial/SignalHandler.o"
 	@echo "... senial/SignalHandler.i"
 	@echo "... senial/SignalHandler.s"

@@ -23,16 +23,16 @@ CMakeFiles/Concurrentes.dir/Imagen.cpp.o: ../Pixel.h
 CMakeFiles/Concurrentes.dir/Pixel.cpp.o: ../Pixel.cpp
 CMakeFiles/Concurrentes.dir/Pixel.cpp.o: ../Pixel.h
 
-CMakeFiles/Concurrentes.dir/main.cpp.o: ../Ajustador.h
-CMakeFiles/Concurrentes.dir/main.cpp.o: ../Aplanador.h
-CMakeFiles/Concurrentes.dir/main.cpp.o: ../Camara.h
-CMakeFiles/Concurrentes.dir/main.cpp.o: ../Imagen.h
-CMakeFiles/Concurrentes.dir/main.cpp.o: ../MemoriaCompartida.h
-CMakeFiles/Concurrentes.dir/main.cpp.o: ../Pixel.h
-CMakeFiles/Concurrentes.dir/main.cpp.o: ../main.cpp
-CMakeFiles/Concurrentes.dir/main.cpp.o: ../senial/EventHandler.h
-CMakeFiles/Concurrentes.dir/main.cpp.o: ../senial/SIGINT_handler.h
-CMakeFiles/Concurrentes.dir/main.cpp.o: ../senial/SignalHandler.h
+CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../Ajustador.h
+CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../Aplanador.h
+CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../Camara.h
+CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../Imagen.h
+CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../Pixel.h
+CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../memoria_compartida/MemoriaCompartida.h
+CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../memoria_compartida/main.cpp
+CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../senial/EventHandler.h
+CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../senial/SIGINT_handler.h
+CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../senial/SignalHandler.h
 
 CMakeFiles/Concurrentes.dir/senial/SignalHandler.cpp.o: ../senial/EventHandler.h
 CMakeFiles/Concurrentes.dir/senial/SignalHandler.cpp.o: ../senial/SignalHandler.cpp

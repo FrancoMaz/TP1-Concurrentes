@@ -4,7 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Concurrentes.dir/Camara.cpp.o"
   "CMakeFiles/Concurrentes.dir/Imagen.cpp.o"
   "CMakeFiles/Concurrentes.dir/Pixel.cpp.o"
-  "CMakeFiles/Concurrentes.dir/main.cpp.o"
+  "CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o"
   "CMakeFiles/Concurrentes.dir/senial/SignalHandler.cpp.o"
   "Concurrentes"
   "Concurrentes.pdb"

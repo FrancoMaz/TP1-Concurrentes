@@ -73,6 +73,7 @@ CMAKE_BINARY_DIR = /home/francomazzoni/TP1-Concurrentes/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/ConcurrentesFifos.dir/all
 all: CMakeFiles/Concurrentes.dir/all
 
 .PHONY : all
@@ -83,9 +84,37 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/ConcurrentesFifos.dir/clean
 clean: CMakeFiles/Concurrentes.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ConcurrentesFifos.dir
+
+# All Build rule for target.
+CMakeFiles/ConcurrentesFifos.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/CMakeFiles --progress-num=9,10,11,12,13,14,15,16,17,18 "Built target ConcurrentesFifos"
+.PHONY : CMakeFiles/ConcurrentesFifos.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/ConcurrentesFifos.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/francomazzoni/TP1-Concurrentes/cmake-build-debug/CMakeFiles 10
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ConcurrentesFifos.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/francomazzoni/TP1-Concurrentes/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/ConcurrentesFifos.dir/rule
+
+# Convenience name for target.
+ConcurrentesFifos: CMakeFiles/ConcurrentesFifos.dir/rule
+
+.PHONY : ConcurrentesFifos
+
+# clean rule for target.
+CMakeFiles/ConcurrentesFifos.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/clean
+.PHONY : CMakeFiles/ConcurrentesFifos.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/Concurrentes.dir
