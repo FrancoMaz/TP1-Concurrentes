@@ -25,13 +25,13 @@ vector<Imagen*> generarImagenes(int cantidadCamaras, int pixelesPorFila) {
     return imagenes;
 };
 
-int* serializarImagenes(vector<Imagen*> imagenes, int pixelesPorFila, int arraySize, int proceso) {
+int* serializarImagenes(vector<Imagen*> imagenes, int pixelesPorFila, int arraySize) {
     int* imagenesSerializadas = new int[arraySize];
 
     int position = 0;
     while (position < arraySize) {
         for (auto & imagen : imagenes) {
-            cout << "Proceso " << proceso << " serializa imagen " << imagen->mostrar() << endl;
+            cout << "Imagen normal: " << imagen->mostrar() << endl;
             for (int j = 0; j < pixelesPorFila * pixelesPorFila; j++) {
                 imagenesSerializadas[position] = imagen->getPixel(j);
                 position++;
@@ -40,6 +40,24 @@ int* serializarImagenes(vector<Imagen*> imagenes, int pixelesPorFila, int arrayS
     }
 
     return imagenesSerializadas;
+
+}
+
+vector<Imagen*> deserializarImagenes(int* imagenes, int pixelesPorFila, int arraySize) {
+    vector<Imagen*> imagenesDeserializadas;
+
+    int position = 0;
+
+    for (int i = 0; i < arraySize; i += (pixelesPorFila * pixelesPorFila)) {
+        Imagen *imagen = new Imagen(pixelesPorFila);
+        for (int j = i; j < i + (pixelesPorFila * pixelesPorFila); j++) {
+            imagen->agregarPixel(imagenes[j]);
+        }
+        cout << "Imagen ajustada: " << imagen->mostrar() << endl;
+        imagenesDeserializadas.push_back(imagen);
+    }
+
+    return imagenesDeserializadas;
 
 }
 
@@ -62,7 +80,7 @@ int* serializarImagen(Imagen* imagen, int pixelesPorFila) {
     return imagenADevolver;
 }
 
-void ajustarImagenes(const vector<Imagen*> imagenes, int pixelesPorFila) {
+vector<Imagen*> ajustarImagenes(const vector<Imagen*> imagenes, int pixelesPorFila) {
 
     string archivo = "/bin/ls";
 
@@ -71,11 +89,7 @@ void ajustarImagenes(const vector<Imagen*> imagenes, int pixelesPorFila) {
     auto *ajustador = new Ajustador(10);
 
     MemoriaCompartida buffer(archivo,'A', arraySize);
-    buffer.escribir(serializarImagenes(imagenes, pixelesPorFila, arraySize, 0), 0, arraySize);
-    /*int *resultado = buffer.leer(0, arraySize);
-    for (int j = 0; j < arraySize; j++) {
-        cout << resultado[j] << endl;
-    }*/
+    buffer.escribir(serializarImagenes(imagenes, pixelesPorFila, arraySize), 0, arraySize);
 
     pid_t ids[imagenes.size()];
 
@@ -102,9 +116,7 @@ void ajustarImagenes(const vector<Imagen*> imagenes, int pixelesPorFila) {
     }
 
     int *resultado = buffer.leer(0, arraySize);
-    for (int j = 0; j < arraySize; j++) {
-        cout << resultado[j] << endl;
-    }
+    return deserializarImagenes(resultado, pixelesPorFila, arraySize);
 
 }
 
@@ -123,11 +135,11 @@ int main() {
     /*SIGINT_Handler sigchld_handler;
     SignalHandler::getInstance()->registrarHandler(SIGCHLD, &sigchld_handler);*/
 
-    ajustarImagenes(imagenes, pixelesPorFila);
+    vector<Imagen*> imagenesAjustadas = ajustarImagenes(imagenes, pixelesPorFila);
 
     //SignalHandler::destruir();
 
-    Aplanador::aplanarImagenes(imagenes, pixelesPorFila);
+    Aplanador::aplanarImagenes(imagenesAjustadas, pixelesPorFila);
 
     return 0;
 }
