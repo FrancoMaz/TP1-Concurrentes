@@ -9,7 +9,7 @@ public:
 	~FifoEscritura() override;
 
 	void abrir() override;
-	ssize_t escribir(void* buffer, ssize_t buffsize) const;
+	ssize_t escribir(int* buffer, ssize_t buffsize) const;
 };
 
 #endif /* FIFOESCRITURA_H_ */

@@ -14,6 +14,8 @@ private:
 public:
     explicit Ajustador(int parametroDeAjuste);
     void ajustarImagen(Imagen *imagen) const;
+
+    void ajustarImagen(Imagen imagen) const;
 };
 
 

@@ -9,7 +9,7 @@ public:
 	~FifoLectura() override;
 
 	void abrir() override;
-	ssize_t leer(void* buffer, ssize_t buffsize) const;
+	ssize_t leer(int* buffer, ssize_t buffsize) const;
 };
 
 #endif /* FIFOLECTURA_H_ */

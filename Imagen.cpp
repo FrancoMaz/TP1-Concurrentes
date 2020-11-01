@@ -32,7 +32,7 @@ int Imagen::calcularRandom(int numerosPosibles) {
     return rand() % numerosPosibles + 1;
 }
 
-string Imagen::mostrar() {
+string Imagen::mostrar() const {
 
     string str;
     for (auto & pixel : this->pixeles){
