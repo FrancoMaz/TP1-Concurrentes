@@ -76,7 +76,6 @@ vector<Imagen> ajustarImagenes(const vector<Imagen> imagenes, int pixelesPorFila
             ajustador->ajustarImagen(&imagen);
             //Serialización
             int* imagenAjustada = serializarImagen(imagen, pixelesPorFila);
-            cout << "Proceso " << i << " ajusta a imagen: " << imagen.mostrar() << endl;
             canalLectura.cerrar();
             //Escritura
             FifoEscritura canalEscritura(archivo1);
@@ -105,10 +104,6 @@ vector<Imagen> ajustarImagenes(const vector<Imagen> imagenes, int pixelesPorFila
             canalLectura.eliminar();
         }
     }
-
-    /*for (int i = 0; i < imagenes.size(); i++) {
-        waitpid(ids[i], nullptr, 0);
-    }*/
 
     cout << endl;
     cout << imagenesAjustadas.size() << endl;
@@ -140,7 +135,7 @@ int main() {
 
     //SignalHandler::destruir();
 
-    //Aplanador::aplanarImagenes(imagenesAjustadas, pixelesPorFila);
+    Aplanador::aplanarImagenes(imagenesAjustadas, pixelesPorFila);
 
     return 0;
 }
