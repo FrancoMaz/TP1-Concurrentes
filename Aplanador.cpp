@@ -7,18 +7,18 @@
 #include <vector>
 using namespace std;
 
-Imagen Aplanador::aplanarImagenes(vector<Imagen> imagenes, int pixelesPorFila) {
-    auto *imagen = new Imagen(pixelesPorFila);
+Imagen* Aplanador::aplanarImagenes(vector<Imagen*> imagenes, int pixelesPorFila) {
+    auto *imagenResultante = new Imagen(pixelesPorFila);
+    int pixelesImagenes = pixelesPorFila * pixelesPorFila;
 
-    for (int i = 0; i < (pixelesPorFila * pixelesPorFila); i++) {
+    for (int i = 0; i < pixelesImagenes; i++) {
         int pixelResultante = 0;
-        for (int j = 0; j < imagenes.size(); j++) {
-            pixelResultante += imagenes[j].getPixel(i);
+        for (auto & imagen : imagenes) {
+            pixelResultante += imagen->getPixel(i);
         }
-        imagen->agregarPixel(pixelResultante);
+        imagenResultante->agregarPixel(pixelResultante);
     }
 
-    cout << "Imagen aplanada" << endl;
-    imagen->mostrar();
-    return *imagen;
+    cout << "Imagen aplanada: " << imagenResultante->mostrar() << endl;
+    return imagenResultante;
 }

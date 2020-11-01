@@ -13,23 +13,27 @@ using namespace std;
 class Imagen {
 
 private:
+
     vector<Pixel> pixeles;
-    int pixelesPorFila;
+    int pixelesImagenes;
 
 public:
-    explicit Imagen(int pixeles);
 
+    explicit Imagen(int pixelesImagenes);
+    ~Imagen();
     static int calcularRandom(int numerosPosibles);
 
     int  getPixel(int posicion);
 
     void ajustar(int valor);
 
-    void mostrar();
+    string mostrar();
 
     void agregarPixel(int valor);
 
     void generarValores();
+
+    int *serializar();
 };
 
 

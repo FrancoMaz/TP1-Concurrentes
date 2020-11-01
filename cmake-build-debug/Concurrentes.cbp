@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug"/>
+				<Option working_dir="/home/francomazzoni/TP1-Concurrentes/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug"/>
+				<Option working_dir="/home/francomazzoni/TP1-Concurrentes/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug"/>
+				<Option working_dir="/home/francomazzoni/TP1-Concurrentes/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Concurrentes">
-				<Option output="/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Concurrentes" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug"/>
+				<Option output="/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Concurrentes" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/francomazzoni/TP1-Concurrentes/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -54,15 +54,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 Concurrentes"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 Concurrentes"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Concurrentes/fast">
-				<Option output="/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Concurrentes" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug"/>
+				<Option output="/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Concurrentes" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/francomazzoni/TP1-Concurrentes/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -77,41 +77,62 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 Concurrentes/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 Concurrentes/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/francomazzoni/CLionProjects/Concurrentes/Aplanador.cpp">
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Ajustador.cpp">
 			<Option target="Concurrentes"/>
 		</Unit>
-		<Unit filename="/home/francomazzoni/CLionProjects/Concurrentes/Aplanador.h">
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Ajustador.h">
 			<Option target="Concurrentes"/>
 		</Unit>
-		<Unit filename="/home/francomazzoni/CLionProjects/Concurrentes/Camara.cpp">
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Aplanador.cpp">
 			<Option target="Concurrentes"/>
 		</Unit>
-		<Unit filename="/home/francomazzoni/CLionProjects/Concurrentes/Camara.h">
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Aplanador.h">
 			<Option target="Concurrentes"/>
 		</Unit>
-		<Unit filename="/home/francomazzoni/CLionProjects/Concurrentes/Imagen.cpp">
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Camara.cpp">
 			<Option target="Concurrentes"/>
 		</Unit>
-		<Unit filename="/home/francomazzoni/CLionProjects/Concurrentes/Imagen.h">
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Camara.h">
 			<Option target="Concurrentes"/>
 		</Unit>
-		<Unit filename="/home/francomazzoni/CLionProjects/Concurrentes/Pixel.cpp">
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Imagen.cpp">
 			<Option target="Concurrentes"/>
 		</Unit>
-		<Unit filename="/home/francomazzoni/CLionProjects/Concurrentes/Pixel.h">
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Imagen.h">
 			<Option target="Concurrentes"/>
 		</Unit>
-		<Unit filename="/home/francomazzoni/CLionProjects/Concurrentes/main.cpp">
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/MemoriaCompartida.h">
 			<Option target="Concurrentes"/>
 		</Unit>
-		<Unit filename="/home/francomazzoni/CLionProjects/Concurrentes/CMakeLists.txt">
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Pixel.cpp">
+			<Option target="Concurrentes"/>
+		</Unit>
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Pixel.h">
+			<Option target="Concurrentes"/>
+		</Unit>
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/main.cpp">
+			<Option target="Concurrentes"/>
+		</Unit>
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/senial/EventHandler.h">
+			<Option target="Concurrentes"/>
+		</Unit>
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/senial/SIGINT_handler.h">
+			<Option target="Concurrentes"/>
+		</Unit>
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/senial/SignalHandler.cpp">
+			<Option target="Concurrentes"/>
+		</Unit>
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/senial/SignalHandler.h">
+			<Option target="Concurrentes"/>
+		</Unit>
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

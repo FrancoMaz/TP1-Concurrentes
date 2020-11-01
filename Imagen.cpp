@@ -9,21 +9,19 @@
 using namespace std;
 
 Imagen::Imagen(int pixelesImagenes) {
-    this->pixelesPorFila = pixelesImagenes;
+    this->pixelesImagenes = pixelesImagenes;
 }
 
 void Imagen::generarValores() {
-    for (int i = 0; i < this->pixelesPorFila*this->pixelesPorFila; i++) {
+    for (int i = 0; i < this->pixelesImagenes; i++) {
         pixeles.emplace_back(calcularRandom(100));
     }
 }
 
 void Imagen::ajustar(int valor) {
-
     for (auto & pixel : this->pixeles){
         pixel.ajustar(calcularRandom(valor));
     }
-
 }
 
 int Imagen::getPixel(int posicion) {
@@ -34,15 +32,19 @@ int Imagen::calcularRandom(int numerosPosibles) {
     return rand() % numerosPosibles + 1;
 }
 
-void Imagen::mostrar() {
+string Imagen::mostrar() {
 
+    string str;
     for (auto & pixel : this->pixeles){
-        cout << pixel.getValor() << "   ";
+        str += to_string(pixel.getValor());
+        str += " ";
     }
 
-    cout << endl;
+    return str;
 }
 
 void Imagen::agregarPixel(int valor) {
     pixeles.emplace_back(valor);
 }
+
+Imagen::~Imagen() = default;

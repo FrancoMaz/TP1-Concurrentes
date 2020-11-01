@@ -4,11 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/francomazzoni/CLionProjects/Concurrentes/Aplanador.cpp" "/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/CMakeFiles/Concurrentes.dir/Aplanador.cpp.o"
-  "/home/francomazzoni/CLionProjects/Concurrentes/Camara.cpp" "/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/CMakeFiles/Concurrentes.dir/Camara.cpp.o"
-  "/home/francomazzoni/CLionProjects/Concurrentes/Imagen.cpp" "/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/CMakeFiles/Concurrentes.dir/Imagen.cpp.o"
-  "/home/francomazzoni/CLionProjects/Concurrentes/Pixel.cpp" "/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/CMakeFiles/Concurrentes.dir/Pixel.cpp.o"
-  "/home/francomazzoni/CLionProjects/Concurrentes/main.cpp" "/home/francomazzoni/CLionProjects/Concurrentes/cmake-build-debug/CMakeFiles/Concurrentes.dir/main.cpp.o"
+  "/home/francomazzoni/TP1-Concurrentes/Ajustador.cpp" "/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/CMakeFiles/Concurrentes.dir/Ajustador.cpp.o"
+  "/home/francomazzoni/TP1-Concurrentes/Aplanador.cpp" "/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/CMakeFiles/Concurrentes.dir/Aplanador.cpp.o"
+  "/home/francomazzoni/TP1-Concurrentes/Camara.cpp" "/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/CMakeFiles/Concurrentes.dir/Camara.cpp.o"
+  "/home/francomazzoni/TP1-Concurrentes/Imagen.cpp" "/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/CMakeFiles/Concurrentes.dir/Imagen.cpp.o"
+  "/home/francomazzoni/TP1-Concurrentes/Pixel.cpp" "/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/CMakeFiles/Concurrentes.dir/Pixel.cpp.o"
+  "/home/francomazzoni/TP1-Concurrentes/main.cpp" "/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/CMakeFiles/Concurrentes.dir/main.cpp.o"
+  "/home/francomazzoni/TP1-Concurrentes/senial/SignalHandler.cpp" "/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/CMakeFiles/Concurrentes.dir/senial/SignalHandler.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

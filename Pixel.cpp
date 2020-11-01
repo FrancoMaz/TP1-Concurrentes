@@ -15,3 +15,5 @@ void Pixel::ajustar(int valorASumar) {
 int Pixel::getValor() const {
     return this->valor;
 }
+
+Pixel::~Pixel() = default;
