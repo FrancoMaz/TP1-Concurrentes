@@ -18,7 +18,7 @@ public:
     ~SIGINT_Handler() override = default;
 
     int handleSignal(int signum) override {
-        assert(signum == SIGCHLD);
+        assert(signum == SIGINT);
         this->gracefulQuit = 1;
         return 0;
     }
@@ -27,9 +27,6 @@ public:
         return this->gracefulQuit;
     }
 
-    void setGracefulQuit(sig_atomic_t gracefulQuit) {
-        this->gracefulQuit = gracefulQuit;
-    }
 };
 
 #endif //CONCURRENTES_SIGINT_HANDLER_H

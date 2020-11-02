@@ -31,7 +31,7 @@ int* serializarImagenes(vector<Imagen> imagenes, int pixelesPorFila, int arraySi
     int position = 0;
     while (position < arraySize) {
         for (auto & imagen : imagenes) {
-            cout << "Imagen normal: " << imagen.mostrar() << endl;
+            //cout << "Imagen normal: " << imagen.mostrar() << endl;
             for (int j = 0; j < pixelesPorFila * pixelesPorFila; j++) {
                 imagenesSerializadas[position] = imagen.getPixel(j);
                 position++;
@@ -51,7 +51,7 @@ vector<Imagen> deserializarImagenes(int* imagenes, int pixelesPorFila, int array
         for (int j = i; j < i + (pixelesPorFila * pixelesPorFila); j++) {
             imagen.agregarPixel(imagenes[j]);
         }
-        cout << "Imagen ajustada: " << imagen.mostrar() << endl;
+        //cout << "Imagen ajustada: " << imagen.mostrar() << endl;
         imagenesDeserializadas.push_back(imagen);
     }
 
@@ -128,16 +128,17 @@ int main() {
     cout << "Ingresar el número de píxeles por fila (las imágenes son NxN): " << endl;
     cin >> pixelesPorFila;
 
-    vector<Imagen> imagenes = generarImagenes(cantidadCamaras, pixelesPorFila);
+    SIGINT_Handler sigint_handler;
+    SignalHandler::getInstance()->registrarHandler(SIGINT, &sigint_handler);
 
-    /*SIGINT_Handler sigchld_handler;
-    SignalHandler::getInstance()->registrarHandler(SIGCHLD, &sigchld_handler);*/
+    while (sigint_handler.getGracefulQuit() == 0) {
+        vector<Imagen> imagenes = generarImagenes(cantidadCamaras, pixelesPorFila);
+        vector<Imagen> imagenesAjustadas = ajustarImagenes(imagenes, pixelesPorFila);
+        Aplanador::aplanarImagenes(imagenesAjustadas, pixelesPorFila);
+    }
 
-    vector<Imagen> imagenesAjustadas = ajustarImagenes(imagenes, pixelesPorFila);
-
-    //SignalHandler::destruir();
-
-    Aplanador::aplanarImagenes(imagenesAjustadas, pixelesPorFila);
+    SignalHandler::destruir();
+    cout << "Fin del proceso" << endl;
 
     return 0;
 }

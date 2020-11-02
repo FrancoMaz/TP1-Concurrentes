@@ -106,7 +106,6 @@ vector<Imagen> ajustarImagenes(const vector<Imagen> imagenes, int pixelesPorFila
     }
 
     cout << endl;
-    cout << imagenesAjustadas.size() << endl;
     cout << "Imagenes ajustadas" << endl;
     for (int i = 0; i < imagenesAjustadas.size(); i++) {
         cout << "Imagen " << i+1 << ": " << imagenesAjustadas[i].mostrar() << endl;
