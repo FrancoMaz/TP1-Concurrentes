@@ -19,6 +19,5 @@ Imagen Aplanador::aplanarImagenes(vector<Imagen> imagenes, int pixelesPorFila) {
         imagenResultante.agregarPixel(pixelResultante);
     }
 
-    cout << "Imagen aplanada: " << imagenResultante.mostrar() << endl;
     return imagenResultante;
 }

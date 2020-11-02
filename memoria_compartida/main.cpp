@@ -1,10 +1,10 @@
 #include <iostream>
 #include "../Camara.h"
-#include "../Imagen.h"
 #include "../Aplanador.h"
 #include "../Ajustador.h"
 #include "../senial/SIGINT_handler.h"
 #include "../senial/SignalHandler.h"
+#include "../Log.h"
 #include "MemoriaCompartida.h"
 #include <unistd.h>
 #include <wait.h>
@@ -25,13 +25,19 @@ vector<Imagen> generarImagenes(int cantidadCamaras, int pixelesPorFila) {
     return imagenes;
 };
 
+void mostrarImagenes(vector<Imagen> imagenes, Log log) {
+
+    for (int i = 0; i < imagenes.size(); i++) {
+        log.escribirAArchivo("Imagen " + to_string(i+1) + ": " + imagenes[i].mostrar(), "DEBUG");
+    }
+}
+
 int* serializarImagenes(vector<Imagen> imagenes, int pixelesPorFila, int arraySize) {
     int* imagenesSerializadas = new int[arraySize];
 
     int position = 0;
     while (position < arraySize) {
         for (auto & imagen : imagenes) {
-            //cout << "Imagen normal: " << imagen.mostrar() << endl;
             for (int j = 0; j < pixelesPorFila * pixelesPorFila; j++) {
                 imagenesSerializadas[position] = imagen.getPixel(j);
                 position++;
@@ -51,7 +57,6 @@ vector<Imagen> deserializarImagenes(int* imagenes, int pixelesPorFila, int array
         for (int j = i; j < i + (pixelesPorFila * pixelesPorFila); j++) {
             imagen.agregarPixel(imagenes[j]);
         }
-        //cout << "Imagen ajustada: " << imagen.mostrar() << endl;
         imagenesDeserializadas.push_back(imagen);
     }
 
@@ -122,19 +127,54 @@ int main() {
 
     int cantidadCamaras;
     int pixelesPorFila;
+    string modoDebug;
+    int maxCantidadCiclos;
+    bool modoDebugActivado = false;
 
     cout << "Ingresar cantidad de cámaras: " << endl;
     cin >> cantidadCamaras;
     cout << "Ingresar el número de píxeles por fila (las imágenes son NxN): " << endl;
     cin >> pixelesPorFila;
+    cout << "Ingresar la cantidad de veces que se ejecutará la generación de imagenes: " << endl;
+    cin >> maxCantidadCiclos;
+    while (modoDebug != "Y" && modoDebug != "N" && modoDebug != "y" && modoDebug != "n") {
+        cout << "Desea ejecutar en modo debug? (Y/N) " << endl;
+        cin >> modoDebug;
+    }
+
+    if (modoDebug == "Y" || modoDebug == "y") {
+        modoDebugActivado = true;
+    }
+
+    Log log = Log("output.txt", modoDebugActivado);
+
+    cout << "Loggeando en el archivo output.txt. Presiona CTRL + C para finalizar" << endl;
+
+    log.escribirAArchivo("Comenzando el proceso con " + to_string(cantidadCamaras) + " imagenes de " + to_string(pixelesPorFila) +
+    "X" + to_string(pixelesPorFila), "INFO");
 
     SIGINT_Handler sigint_handler;
     SignalHandler::getInstance()->registrarHandler(SIGINT, &sigint_handler);
 
-    while (sigint_handler.getGracefulQuit() == 0) {
+    int cantidadCiclos = 0;
+
+    while (sigint_handler.getGracefulQuit() == 0 && cantidadCiclos < maxCantidadCiclos) {
+        cantidadCiclos++;
+
+        log.escribirAArchivo("Comienza el ciclo " + to_string(cantidadCiclos), "INFO");
+
+        log.escribirAArchivo("Generando imagenes...", "INFO");
         vector<Imagen> imagenes = generarImagenes(cantidadCamaras, pixelesPorFila);
+        mostrarImagenes(imagenes, log);
+
+        log.escribirAArchivo("Ajustando imagenes...", "INFO");
         vector<Imagen> imagenesAjustadas = ajustarImagenes(imagenes, pixelesPorFila);
-        Aplanador::aplanarImagenes(imagenesAjustadas, pixelesPorFila);
+        mostrarImagenes(imagenesAjustadas, log);
+
+        log.escribirAArchivo("Aplanando imagenes...", "INFO");
+        Imagen imagenAplanada = Aplanador::aplanarImagenes(imagenesAjustadas, pixelesPorFila);
+        log.escribirAArchivo("Imagen aplanada: " + imagenAplanada.mostrar(), "DEBUG");
+
     }
 
     SignalHandler::destruir();

@@ -276,6 +276,33 @@ Imagen.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Imagen.cpp.s
 .PHONY : Imagen.cpp.s
 
+Log.o: Log.cpp.o
+
+.PHONY : Log.o
+
+# target to build an object file
+Log.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Log.cpp.o
+.PHONY : Log.cpp.o
+
+Log.i: Log.cpp.i
+
+.PHONY : Log.i
+
+# target to preprocess a source file
+Log.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Log.cpp.i
+.PHONY : Log.cpp.i
+
+Log.s: Log.cpp.s
+
+.PHONY : Log.s
+
+# target to generate assembly for a file
+Log.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Log.cpp.s
+.PHONY : Log.cpp.s
+
 Pixel.o: Pixel.cpp.o
 
 .PHONY : Pixel.o
@@ -493,6 +520,9 @@ help:
 	@echo "... Imagen.o"
 	@echo "... Imagen.i"
 	@echo "... Imagen.s"
+	@echo "... Log.o"
+	@echo "... Log.i"
+	@echo "... Log.s"
 	@echo "... Pixel.o"
 	@echo "... Pixel.i"
 	@echo "... Pixel.s"

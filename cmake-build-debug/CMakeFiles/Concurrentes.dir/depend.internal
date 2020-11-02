@@ -20,6 +20,9 @@ CMakeFiles/Concurrentes.dir/Imagen.cpp.o
  /home/francomazzoni/TP1-Concurrentes/Imagen.cpp
  /home/francomazzoni/TP1-Concurrentes/Imagen.h
  /home/francomazzoni/TP1-Concurrentes/Pixel.h
+CMakeFiles/Concurrentes.dir/Log.cpp.o
+ /home/francomazzoni/TP1-Concurrentes/Log.cpp
+ /home/francomazzoni/TP1-Concurrentes/Log.h
 CMakeFiles/Concurrentes.dir/Pixel.cpp.o
  /home/francomazzoni/TP1-Concurrentes/Pixel.cpp
  /home/francomazzoni/TP1-Concurrentes/Pixel.h
@@ -28,6 +31,7 @@ CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o
  /home/francomazzoni/TP1-Concurrentes/Aplanador.h
  /home/francomazzoni/TP1-Concurrentes/Camara.h
  /home/francomazzoni/TP1-Concurrentes/Imagen.h
+ /home/francomazzoni/TP1-Concurrentes/Log.h
  /home/francomazzoni/TP1-Concurrentes/Pixel.h
  /home/francomazzoni/TP1-Concurrentes/memoria_compartida/MemoriaCompartida.h
  /home/francomazzoni/TP1-Concurrentes/memoria_compartida/main.cpp

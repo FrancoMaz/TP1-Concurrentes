@@ -20,6 +20,9 @@ CMakeFiles/Concurrentes.dir/Imagen.cpp.o: ../Imagen.cpp
 CMakeFiles/Concurrentes.dir/Imagen.cpp.o: ../Imagen.h
 CMakeFiles/Concurrentes.dir/Imagen.cpp.o: ../Pixel.h
 
+CMakeFiles/Concurrentes.dir/Log.cpp.o: ../Log.cpp
+CMakeFiles/Concurrentes.dir/Log.cpp.o: ../Log.h
+
 CMakeFiles/Concurrentes.dir/Pixel.cpp.o: ../Pixel.cpp
 CMakeFiles/Concurrentes.dir/Pixel.cpp.o: ../Pixel.h
 
@@ -27,6 +30,7 @@ CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../Ajustador.h
 CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../Aplanador.h
 CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../Camara.h
 CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../Imagen.h
+CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../Log.h
 CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../Pixel.h
 CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../memoria_compartida/MemoriaCompartida.h
 CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../memoria_compartida/main.cpp

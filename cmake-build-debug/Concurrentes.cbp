@@ -162,6 +162,12 @@
 			<Option target="ConcurrentesFifos"/>
 			<Option target="Concurrentes"/>
 		</Unit>
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Log.cpp">
+			<Option target="Concurrentes"/>
+		</Unit>
+		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Log.h">
+			<Option target="Concurrentes"/>
+		</Unit>
 		<Unit filename="/home/francomazzoni/TP1-Concurrentes/Pixel.cpp">
 			<Option target="ConcurrentesFifos"/>
 			<Option target="Concurrentes"/>

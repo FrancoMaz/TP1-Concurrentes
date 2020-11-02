@@ -1,6 +1,5 @@
 #include <iostream>
 #include "../Camara.h"
-#include "../Imagen.h"
 #include "../Aplanador.h"
 #include "../Ajustador.h"
 #include "../senial/SIGINT_handler.h"
@@ -43,6 +42,13 @@ int* serializarImagen(Imagen imagen, int pixelesPorFila) {
         imagenADevolver[i] = imagen.getPixel(i);
     }
     return imagenADevolver;
+}
+
+void mostrarImagenes(vector<Imagen*> imagenes) {
+
+    for (int i = 0; i < imagenes.size(); i++) {
+
+    }
 }
 
 

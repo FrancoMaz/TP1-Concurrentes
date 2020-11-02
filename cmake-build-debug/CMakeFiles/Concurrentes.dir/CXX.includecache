@@ -26,6 +26,10 @@ Pixel.h
 vector
 -
 
+/home/francomazzoni/TP1-Concurrentes/Log.h
+iostream
+/home/francomazzoni/TP1-Concurrentes/iostream
+
 /home/francomazzoni/TP1-Concurrentes/Pixel.h
 string
 -
@@ -51,8 +55,6 @@ iostream
 -
 ../Camara.h
 /home/francomazzoni/TP1-Concurrentes/Camara.h
-../Imagen.h
-/home/francomazzoni/TP1-Concurrentes/Imagen.h
 ../Aplanador.h
 /home/francomazzoni/TP1-Concurrentes/Aplanador.h
 ../Ajustador.h
@@ -61,6 +63,8 @@ iostream
 /home/francomazzoni/TP1-Concurrentes/senial/SIGINT_handler.h
 ../senial/SignalHandler.h
 /home/francomazzoni/TP1-Concurrentes/senial/SignalHandler.h
+../Log.h
+/home/francomazzoni/TP1-Concurrentes/Log.h
 MemoriaCompartida.h
 /home/francomazzoni/TP1-Concurrentes/memoria_compartida/MemoriaCompartida.h
 unistd.h
