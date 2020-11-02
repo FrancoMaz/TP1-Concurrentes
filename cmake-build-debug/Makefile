@@ -447,6 +447,7 @@ senial/SignalHandler.o: senial/SignalHandler.cpp.o
 
 # target to build an object file
 senial/SignalHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/senial/SignalHandler.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/senial/SignalHandler.cpp.o
 .PHONY : senial/SignalHandler.cpp.o
 
@@ -456,6 +457,7 @@ senial/SignalHandler.i: senial/SignalHandler.cpp.i
 
 # target to preprocess a source file
 senial/SignalHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/senial/SignalHandler.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/senial/SignalHandler.cpp.i
 .PHONY : senial/SignalHandler.cpp.i
 
@@ -465,6 +467,7 @@ senial/SignalHandler.s: senial/SignalHandler.cpp.s
 
 # target to generate assembly for a file
 senial/SignalHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/senial/SignalHandler.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/senial/SignalHandler.cpp.s
 .PHONY : senial/SignalHandler.cpp.s
 

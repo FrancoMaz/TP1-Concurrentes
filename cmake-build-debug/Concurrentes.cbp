@@ -198,15 +198,19 @@
 			<Option target="Concurrentes"/>
 		</Unit>
 		<Unit filename="/home/francomazzoni/TP1-Concurrentes/senial/EventHandler.h">
+			<Option target="ConcurrentesFifos"/>
 			<Option target="Concurrentes"/>
 		</Unit>
 		<Unit filename="/home/francomazzoni/TP1-Concurrentes/senial/SIGINT_handler.h">
+			<Option target="ConcurrentesFifos"/>
 			<Option target="Concurrentes"/>
 		</Unit>
 		<Unit filename="/home/francomazzoni/TP1-Concurrentes/senial/SignalHandler.cpp">
+			<Option target="ConcurrentesFifos"/>
 			<Option target="Concurrentes"/>
 		</Unit>
 		<Unit filename="/home/francomazzoni/TP1-Concurrentes/senial/SignalHandler.h">
+			<Option target="ConcurrentesFifos"/>
 			<Option target="Concurrentes"/>
 		</Unit>
 		<Unit filename="/home/francomazzoni/TP1-Concurrentes/CMakeLists.txt">

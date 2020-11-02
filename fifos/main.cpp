@@ -125,16 +125,19 @@ int main() {
     cout << "Ingresar el número de píxeles por fila (las imágenes son NxN): " << endl;
     cin >> pixelesPorFila;
 
-    vector<Imagen> imagenes = generarImagenes(cantidadCamaras, pixelesPorFila);
+    SIGINT_Handler sigint_handler;
+    SignalHandler::getInstance()->registrarHandler(SIGINT, &sigint_handler);
 
-    /*SIGINT_Handler sigchld_handler;
-    SignalHandler::getInstance()->registrarHandler(SIGCHLD, &sigchld_handler);*/
+    while (sigint_handler.getGracefulQuit() == 0) {
 
-    vector<Imagen> imagenesAjustadas = ajustarImagenes(imagenes, pixelesPorFila);
+        vector<Imagen> imagenes = generarImagenes(cantidadCamaras, pixelesPorFila);
+        vector<Imagen> imagenesAjustadas = ajustarImagenes(imagenes, pixelesPorFila);
 
-    //SignalHandler::destruir();
+        Aplanador::aplanarImagenes(imagenesAjustadas, pixelesPorFila);
+    }
 
-    Aplanador::aplanarImagenes(imagenesAjustadas, pixelesPorFila);
+    SignalHandler::destruir();
+    cout << "Fin del proceso" << endl;
 
     return 0;
 }
