@@ -16,7 +16,8 @@ private:
 
 public:
     explicit Log(string archivo, bool modoDebug);
-    void escribirAArchivo(const string& mensaje, const string& modo);
+    void escribirAArchivo(const string& mensaje, const string& modo, bool primeraVez);
+    void escribirAArchivo(const string &mensaje, const string &modo);
 };
 
 

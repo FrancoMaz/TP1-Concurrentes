@@ -282,6 +282,7 @@ Log.o: Log.cpp.o
 
 # target to build an object file
 Log.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/Log.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Log.cpp.o
 .PHONY : Log.cpp.o
 
@@ -291,6 +292,7 @@ Log.i: Log.cpp.i
 
 # target to preprocess a source file
 Log.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/Log.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Log.cpp.i
 .PHONY : Log.cpp.i
 
@@ -300,6 +302,7 @@ Log.s: Log.cpp.s
 
 # target to generate assembly for a file
 Log.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConcurrentesFifos.dir/build.make CMakeFiles/ConcurrentesFifos.dir/Log.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Concurrentes.dir/build.make CMakeFiles/Concurrentes.dir/Log.cpp.s
 .PHONY : Log.cpp.s
 
