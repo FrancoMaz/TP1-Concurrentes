@@ -14,6 +14,7 @@ Log::Log(string archivo, bool modoDebug) {
     this->modoDebug = modoDebug;
 }
 
+//Se escribe al archivo el primer log (tiene que pisar el archivo si ya existe)
 void Log::escribirAArchivo(const string& mensaje, const string& modo, bool primeraVez) {
     if (modo != "DEBUG" || (this->modoDebug && modo == "DEBUG")) {
         ofstream myfile;
@@ -23,6 +24,7 @@ void Log::escribirAArchivo(const string& mensaje, const string& modo, bool prime
     }
 }
 
+//Se escriben los logs restantes (se appendea al archivo ya existente)
 void Log::escribirAArchivo(const string& mensaje, const string& modo) {
     if (modo != "DEBUG" || (this->modoDebug && modo == "DEBUG")) {
         ofstream myfile;

@@ -7,6 +7,7 @@
 #include <vector>
 using namespace std;
 
+//El algoritmo de aplanado suma píxel con píxel de todas las imagenes capturadas
 Imagen Aplanador::aplanarImagenes(vector<Imagen> imagenes, int pixelesPorFila) {
     auto imagenResultante = Imagen(pixelesPorFila);
     int pixelesImagenes = pixelesPorFila * pixelesPorFila;

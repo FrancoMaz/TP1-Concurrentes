@@ -35,6 +35,7 @@ public:
 MemoriaCompartida::MemoriaCompartida ():shmId(0),ptrDatos(nullptr) {
 }
 
+//Se attachea la memoria compartida en el constructor
 MemoriaCompartida::MemoriaCompartida (const string& archivo, const char letra, int size):shmId(0),ptrDatos(nullptr) {
     key_t clave = ftok ( archivo.c_str(),letra );
 
@@ -58,6 +59,7 @@ MemoriaCompartida::MemoriaCompartida (const string& archivo, const char letra, i
     }
 }
 
+//Se destruye la memoria compartida
 MemoriaCompartida::~MemoriaCompartida () {
     int errorDt = shmdt ( static_cast<void*> (this->ptrDatos) );
 
@@ -85,6 +87,7 @@ MemoriaCompartida& MemoriaCompartida::operator= ( const MemoriaCompartida& orige
     return *this;
 }
 
+//Se escribe byte a byte en la memoria
 void MemoriaCompartida::escribir (int* dato, int offset, int arraySize) {
 
     int contador = 0;
@@ -94,16 +97,18 @@ void MemoriaCompartida::escribir (int* dato, int offset, int arraySize) {
     }
 }
 
+//Se lee byte a byte en la memoria
 int* MemoriaCompartida::leer(int offset, int arraySize) const {
-    int* aDevolver = new int[arraySize];
+    int* datosLeidos = new int[arraySize];
     int contador = 0;
     for (int i = offset; i < arraySize + offset; i++) {
-        aDevolver[contador] = *(this->ptrDatos + i*sizeof(int));
+        datosLeidos[contador] = *(this->ptrDatos + i*sizeof(int));
         contador++;
     }
-    return aDevolver;
+    return datosLeidos;
 }
 
+//Se devuelve la cantidad de procesos adosados a la memoria compartida
 int MemoriaCompartida:: cantidadProcesosAdosados () const {
     shmid_ds estado{};
     shmctl ( this->shmId,IPC_STAT,&estado );

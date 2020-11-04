@@ -17,6 +17,7 @@ public:
     SIGINT_Handler(): gracefulQuit(0) {}
     ~SIGINT_Handler() override = default;
 
+    //Para SIGINT, se setea el parámetro gracefulQuit en 1 si se detecta la señal (desde el main se valida el valor de ese parámetro)
     int handleSignal(int signum) override {
         assert(signum == SIGINT);
         this->gracefulQuit = 1;

@@ -8,6 +8,7 @@ Pixel::Pixel(int valorP) {
     this->valor = valorP;
 }
 
+//Se ajusta el píxel
 void Pixel::ajustar(int valorASumar) {
     this->valor += valorASumar;
 }

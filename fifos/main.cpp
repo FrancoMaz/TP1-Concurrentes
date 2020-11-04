@@ -56,6 +56,7 @@ vector<Imagen> ajustarImagenes(const vector<Imagen> imagenes, int pixelesPorFila
 
     int arraySize = pixelesPorFila * pixelesPorFila * imagenes.size();
     int bufferSize = arraySize*sizeof(int);
+    //Se utilizan 2*c archivos diferentes
     string archivo1 = "/tmp/archivo_fifo";
     string archivo2 = "/tmp/archivo_fifo_2";
 
@@ -120,6 +121,7 @@ int main() {
     int maxCantidadCiclos;
     bool modoDebugActivado = false;
 
+    //Se piden los datos al usuario
     cout << "Ingresar cantidad de cámaras: " << endl;
     cin >> cantidadCamaras;
     cout << "Ingresar el número de píxeles por fila (las imágenes son NxN): " << endl;
@@ -131,10 +133,12 @@ int main() {
         cin >> modoDebug;
     }
 
+    //Activar modo debug
     if (modoDebug == "Y" || modoDebug == "y") {
         modoDebugActivado = true;
     }
 
+    //Se loguea en el archivo output_ej2.txt
     Log log = Log("output_ej2.txt", modoDebugActivado);
 
     cout << "Loggeando en el archivo output_ej2.txt. Presiona CTRL + C para finalizar" << endl;
@@ -142,24 +146,29 @@ int main() {
     log.escribirAArchivo("Comenzando el proceso con " + to_string(cantidadCamaras) + " imagenes de " + to_string(pixelesPorFila) +
                          "X" + to_string(pixelesPorFila), "INFO", true);
 
+    //Se registra el handler para la señal SIGINT
     SIGINT_Handler sigint_handler;
     SignalHandler::getInstance()->registrarHandler(SIGINT, &sigint_handler);
 
     int cantidadCiclos = 0;
 
+    //Si se detecta la señal SIGINT (el usuario ingresa CTRL + C) o se llega a la máxima cantidad de ciclos, entonces el proceso termina
     while (sigint_handler.getGracefulQuit() == 0 && cantidadCiclos < maxCantidadCiclos) {
         cantidadCiclos++;
 
         log.escribirAArchivo("Comienza el ciclo " + to_string(cantidadCiclos), "INFO");
 
+        //Generación de imagenes
         log.escribirAArchivo("Generando imagenes...", "INFO");
         vector<Imagen> imagenes = generarImagenes(cantidadCamaras, pixelesPorFila);
         mostrarImagenes(imagenes, log);
 
+        //Ajuste de imagenes
         log.escribirAArchivo("Ajustando imagenes...", "INFO");
         vector<Imagen> imagenesAjustadas = ajustarImagenes(imagenes, pixelesPorFila);
         mostrarImagenes(imagenesAjustadas, log);
 
+        //Aplanado de imagenes
         log.escribirAArchivo("Aplanando imagenes...", "INFO");
         Imagen imagenAplanada = Aplanador::aplanarImagenes(imagenesAjustadas, pixelesPorFila);
         log.escribirAArchivo("Imagen aplanada: " + imagenAplanada.mostrar(), "DEBUG");
