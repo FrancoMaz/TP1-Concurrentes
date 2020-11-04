@@ -9,11 +9,13 @@ EventHandler* SignalHandler::signal_handlers[NSIG];
 
 SignalHandler::SignalHandler() = default;
 
+//Se handlean todas las señales registradas
 void SignalHandler::dispatcher(int signum) {
     if (SignalHandler::signal_handlers[signum] != nullptr)
         SignalHandler::signal_handlers[signum]->handleSignal(signum);
 }
 
+//Se toma la instancia de SignalHandler, ya que es singleton
 SignalHandler *SignalHandler::getInstance() {
     if (instance == nullptr)
         instance = new SignalHandler();
@@ -21,6 +23,7 @@ SignalHandler *SignalHandler::getInstance() {
     return instance;
 }
 
+//Se destruye el handler
 void SignalHandler::destruir() {
     if (instance != nullptr) {
         delete (instance);
@@ -28,6 +31,7 @@ void SignalHandler::destruir() {
     }
 }
 
+//Se registra la señal correspondiente a signum (para este caso solo sería SIGINT)
 EventHandler *SignalHandler::registrarHandler(int signum, EventHandler *eh) {
     EventHandler *old_eh = SignalHandler::signal_handlers[signum];
     SignalHandler::signal_handlers[signum] = eh ;
@@ -38,9 +42,4 @@ EventHandler *SignalHandler::registrarHandler(int signum, EventHandler *eh) {
     sigaddset(&sa.sa_mask, signum);
     sigaction(signum, &sa,nullptr);
     return old_eh ;
-}
-
-int SignalHandler::removerHandler(int signum) {
-    SignalHandler::signal_handlers[signum] = nullptr;
-    return 0;
 }

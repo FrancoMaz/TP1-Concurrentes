@@ -27,13 +27,12 @@ public:
 
     void ajustar(int valor);
 
-    string mostrar();
+    string mostrar() const;
 
     void agregarPixel(int valor);
 
     void generarValores();
 
-    int *serializar();
 };
 
 

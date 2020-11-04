@@ -10,19 +10,14 @@
 class Camara {
 
 private:
-    Imagen *imagen;
+    Imagen imagen;
 
 public:
 
-    explicit Camara();
+    explicit Camara(const Imagen& imagen);
 
-    Imagen *generarImagen(int pixelesPorFila);
+    Imagen generarImagen(int pixelesPorFila);
 
-    void ajustarImagen();
-
-    void mostrarImagen();
-
-    Imagen getImagen();
 };
 
 #endif //CONCURRENTES_CAMARA_H

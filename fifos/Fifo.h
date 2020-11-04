@@ -1,0 +1,25 @@
+#ifndef FIFO_H_
+#define FIFO_H_
+
+#include <string>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+using namespace std;
+
+class Fifo {
+public:
+	explicit Fifo(const string& nombre);
+	virtual ~Fifo();
+	virtual void abrir() = 0;
+	void cerrar();
+	void eliminar() const;
+
+protected:
+	string nombre;
+	int fd;
+};
+
+#endif /* FIFO_H_ */

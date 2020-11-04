@@ -77,18 +77,18 @@ include CMakeFiles/Concurrentes.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Concurrentes.dir/flags.make
 
-CMakeFiles/Concurrentes.dir/main.cpp.o: CMakeFiles/Concurrentes.dir/flags.make
-CMakeFiles/Concurrentes.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Concurrentes.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Concurrentes.dir/main.cpp.o -c /home/francomazzoni/TP1-Concurrentes/main.cpp
+CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: CMakeFiles/Concurrentes.dir/flags.make
+CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o: ../memoria_compartida/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o -c /home/francomazzoni/TP1-Concurrentes/memoria_compartida/main.cpp
 
-CMakeFiles/Concurrentes.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Concurrentes.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/francomazzoni/TP1-Concurrentes/main.cpp > CMakeFiles/Concurrentes.dir/main.cpp.i
+CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/francomazzoni/TP1-Concurrentes/memoria_compartida/main.cpp > CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.i
 
-CMakeFiles/Concurrentes.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Concurrentes.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/francomazzoni/TP1-Concurrentes/main.cpp -o CMakeFiles/Concurrentes.dir/main.cpp.s
+CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/francomazzoni/TP1-Concurrentes/memoria_compartida/main.cpp -o CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.s
 
 CMakeFiles/Concurrentes.dir/Camara.cpp.o: CMakeFiles/Concurrentes.dir/flags.make
 CMakeFiles/Concurrentes.dir/Camara.cpp.o: ../Camara.cpp
@@ -168,29 +168,44 @@ CMakeFiles/Concurrentes.dir/senial/SignalHandler.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Concurrentes.dir/senial/SignalHandler.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/francomazzoni/TP1-Concurrentes/senial/SignalHandler.cpp -o CMakeFiles/Concurrentes.dir/senial/SignalHandler.cpp.s
 
+CMakeFiles/Concurrentes.dir/Log.cpp.o: CMakeFiles/Concurrentes.dir/flags.make
+CMakeFiles/Concurrentes.dir/Log.cpp.o: ../Log.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Concurrentes.dir/Log.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Concurrentes.dir/Log.cpp.o -c /home/francomazzoni/TP1-Concurrentes/Log.cpp
+
+CMakeFiles/Concurrentes.dir/Log.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Concurrentes.dir/Log.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/francomazzoni/TP1-Concurrentes/Log.cpp > CMakeFiles/Concurrentes.dir/Log.cpp.i
+
+CMakeFiles/Concurrentes.dir/Log.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Concurrentes.dir/Log.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/francomazzoni/TP1-Concurrentes/Log.cpp -o CMakeFiles/Concurrentes.dir/Log.cpp.s
+
 # Object files for target Concurrentes
 Concurrentes_OBJECTS = \
-"CMakeFiles/Concurrentes.dir/main.cpp.o" \
+"CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o" \
 "CMakeFiles/Concurrentes.dir/Camara.cpp.o" \
 "CMakeFiles/Concurrentes.dir/Imagen.cpp.o" \
 "CMakeFiles/Concurrentes.dir/Aplanador.cpp.o" \
 "CMakeFiles/Concurrentes.dir/Pixel.cpp.o" \
 "CMakeFiles/Concurrentes.dir/Ajustador.cpp.o" \
-"CMakeFiles/Concurrentes.dir/senial/SignalHandler.cpp.o"
+"CMakeFiles/Concurrentes.dir/senial/SignalHandler.cpp.o" \
+"CMakeFiles/Concurrentes.dir/Log.cpp.o"
 
 # External object files for target Concurrentes
 Concurrentes_EXTERNAL_OBJECTS =
 
-Concurrentes: CMakeFiles/Concurrentes.dir/main.cpp.o
+Concurrentes: CMakeFiles/Concurrentes.dir/memoria_compartida/main.cpp.o
 Concurrentes: CMakeFiles/Concurrentes.dir/Camara.cpp.o
 Concurrentes: CMakeFiles/Concurrentes.dir/Imagen.cpp.o
 Concurrentes: CMakeFiles/Concurrentes.dir/Aplanador.cpp.o
 Concurrentes: CMakeFiles/Concurrentes.dir/Pixel.cpp.o
 Concurrentes: CMakeFiles/Concurrentes.dir/Ajustador.cpp.o
 Concurrentes: CMakeFiles/Concurrentes.dir/senial/SignalHandler.cpp.o
+Concurrentes: CMakeFiles/Concurrentes.dir/Log.cpp.o
 Concurrentes: CMakeFiles/Concurrentes.dir/build.make
 Concurrentes: CMakeFiles/Concurrentes.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable Concurrentes"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/francomazzoni/TP1-Concurrentes/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable Concurrentes"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Concurrentes.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
