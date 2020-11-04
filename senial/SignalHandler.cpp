@@ -39,8 +39,3 @@ EventHandler *SignalHandler::registrarHandler(int signum, EventHandler *eh) {
     sigaction(signum, &sa,nullptr);
     return old_eh ;
 }
-
-int SignalHandler::removerHandler(int signum) {
-    SignalHandler::signal_handlers[signum] = nullptr;
-    return 0;
-}

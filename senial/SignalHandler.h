@@ -20,7 +20,6 @@ public:
     static SignalHandler *getInstance();
     static void destruir();
     static EventHandler *registrarHandler (int signum, EventHandler *eh);
-    static int removerHandler (int signum);
 };
 
 #endif //CONCURRENTES_SIGNALHANDLER_H

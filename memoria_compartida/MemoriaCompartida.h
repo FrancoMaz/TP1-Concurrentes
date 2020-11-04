@@ -25,24 +25,23 @@ private:
 
 public:
     MemoriaCompartida();
-    MemoriaCompartida (const std::string& archivo,char letra, int arraySize);
+    MemoriaCompartida (const string& archivo,char letra, int arraySize);
     ~MemoriaCompartida ();
     MemoriaCompartida& operator= ( const MemoriaCompartida& origen );
-    void escribir ( const int* dato, int offset, int pixelesPorFila );
-    int* leer (int offset, int pixelesPorFila) const;
+    void escribir (int* dato, int offset, int arraySize );
+    int* leer (int offset, int arraySize) const;
 };
 
-MemoriaCompartida::MemoriaCompartida ():shmId(0),ptrDatos(NULL) {
+MemoriaCompartida::MemoriaCompartida ():shmId(0),ptrDatos(nullptr) {
 }
 
-MemoriaCompartida::MemoriaCompartida (const string& archivo,const char letra, int size):shmId(0),ptrDatos(NULL) {
+MemoriaCompartida::MemoriaCompartida (const string& archivo, const char letra, int size):shmId(0),ptrDatos(nullptr) {
     key_t clave = ftok ( archivo.c_str(),letra );
 
     if ( clave > 0 ) {
         this->shmId = shmget ( clave,sizeof(int) * size,0644|IPC_CREAT );
-
         if ( this->shmId > 0 ) {
-            void* tmpPtr = shmat ( this->shmId,NULL,0 );
+            void* tmpPtr = shmat ( this->shmId,nullptr,0 );
             if ( tmpPtr != (void*) -1 ) {
                 this->ptrDatos = (int*) tmpPtr;
             } else {
@@ -86,7 +85,7 @@ MemoriaCompartida& MemoriaCompartida::operator= ( const MemoriaCompartida& orige
     return *this;
 }
 
-void MemoriaCompartida::escribir (const int* dato, int offset, int arraySize) {
+void MemoriaCompartida::escribir (int* dato, int offset, int arraySize) {
 
     int contador = 0;
     for (int i = offset; i < arraySize + offset; i++) {

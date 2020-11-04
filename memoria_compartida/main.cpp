@@ -83,7 +83,7 @@ int* serializarImagen(Imagen imagen, int pixelesPorFila) {
     return imagenADevolver;
 }
 
-vector<Imagen> ajustarImagenes(const vector<Imagen> imagenes, int pixelesPorFila) {
+vector<Imagen> ajustarImagenes(const vector<Imagen>& imagenes, int pixelesPorFila) {
 
     string archivo = "/bin/ls";
 
@@ -92,8 +92,8 @@ vector<Imagen> ajustarImagenes(const vector<Imagen> imagenes, int pixelesPorFila
     auto *ajustador = new Ajustador(10);
 
     MemoriaCompartida buffer(archivo,'A', arraySize);
-    buffer.escribir(serializarImagenes(imagenes, pixelesPorFila, arraySize), 0, arraySize);
-
+    int* imagenesAEscribir = serializarImagenes(imagenes, pixelesPorFila, arraySize);
+    buffer.escribir(imagenesAEscribir, 0, arraySize);
     pid_t ids[imagenes.size()];
 
     for (int i = 0; i < imagenes.size(); i++) {
@@ -146,7 +146,7 @@ int main() {
         modoDebugActivado = true;
     }
 
-    Log log = Log("output.txt", modoDebugActivado);
+    Log log = Log("output_ej1.txt", modoDebugActivado);
 
     cout << "Loggeando en el archivo output.txt. Presiona CTRL + C para finalizar" << endl;
 

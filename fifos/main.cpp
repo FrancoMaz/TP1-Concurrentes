@@ -56,8 +56,8 @@ vector<Imagen> ajustarImagenes(const vector<Imagen> imagenes, int pixelesPorFila
 
     int arraySize = pixelesPorFila * pixelesPorFila * imagenes.size();
     int bufferSize = arraySize*sizeof(int);
-    string archivo = "/tmp/archivo_fifo";
-    string archivo1 = "/tmp/archivo_fifo_2";
+    string archivo1 = "/tmp/archivo_fifo";
+    string archivo2 = "/tmp/archivo_fifo_2";
 
     auto *ajustador = new Ajustador(10);
     vector<Imagen> imagenesAjustadas;
@@ -68,7 +68,7 @@ vector<Imagen> ajustarImagenes(const vector<Imagen> imagenes, int pixelesPorFila
         ids[i] = fork();
         if (ids[i] == 0) {
             //Lectura
-            FifoLectura canalLectura(archivo);
+            FifoLectura canalLectura(archivo1 + "_" + to_string(i));
             int buffer[pixelesPorFila*pixelesPorFila*sizeof(int)];
             canalLectura.abrir();
             canalLectura.leer(buffer, pixelesPorFila*pixelesPorFila*sizeof(int));
@@ -79,31 +79,33 @@ vector<Imagen> ajustarImagenes(const vector<Imagen> imagenes, int pixelesPorFila
             int* imagenAjustada = serializarImagen(imagen, pixelesPorFila);
             canalLectura.cerrar();
             //Escritura
-            FifoEscritura canalEscritura(archivo1);
+            FifoEscritura canalEscritura(archivo2 + "_" + to_string(i));
             canalEscritura.abrir();
             canalEscritura.escribir(imagenAjustada, bufferSize);
             canalEscritura.cerrar();
             exit(0);
         } else {
             //Escritura
-            FifoEscritura canalEscritura(archivo);
+            FifoEscritura canalEscritura(archivo1 + "_" + to_string(i));
             canalEscritura.abrir();
             int* imagenSerializada = serializarImagen(imagenes[i], pixelesPorFila);
             canalEscritura.escribir(imagenSerializada, bufferSize);
             canalEscritura.cerrar();
             canalEscritura.eliminar();
-            //Lectura
-            FifoLectura canalLectura(archivo1);
-            int buffer[pixelesPorFila*pixelesPorFila*sizeof(int)];
-            canalLectura.abrir();
-            canalLectura.leer(buffer, pixelesPorFila*pixelesPorFila*sizeof(int));
-            //Deserialización
-            Imagen imagen = deserializarImagen(buffer, pixelesPorFila);
-            imagenesAjustadas.push_back(imagen);
-            waitpid(ids[i], nullptr, 0);
-            canalLectura.cerrar();
-            canalLectura.eliminar();
         }
+    }
+
+    for (int i = 0; i < imagenes.size(); i++) {
+        //Lectura
+        FifoLectura canalLectura(archivo2 + "_" + to_string(i));
+        int buffer[pixelesPorFila*pixelesPorFila*sizeof(int)];
+        canalLectura.abrir();
+        canalLectura.leer(buffer, pixelesPorFila*pixelesPorFila*sizeof(int));
+        //Deserialización
+        Imagen imagen = deserializarImagen(buffer, pixelesPorFila);
+        imagenesAjustadas.push_back(imagen);
+        canalLectura.cerrar();
+        canalLectura.eliminar();
     }
 
     return imagenesAjustadas;
@@ -133,7 +135,7 @@ int main() {
         modoDebugActivado = true;
     }
 
-    Log log = Log("output.txt", modoDebugActivado);
+    Log log = Log("output_ej2.txt", modoDebugActivado);
 
     cout << "Loggeando en el archivo output.txt. Presiona CTRL + C para finalizar" << endl;
 

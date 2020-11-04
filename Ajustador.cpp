@@ -12,7 +12,3 @@ Ajustador::Ajustador(int parametroDeAjuste) {
 void Ajustador::ajustarImagen(Imagen *imagen) const {
     imagen->ajustar(this->parametroDeAjuste);
 }
-
-void Ajustador::ajustarImagen(Imagen imagen) const {
-    imagen.ajustar(this->parametroDeAjuste);
-}

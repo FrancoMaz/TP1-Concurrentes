@@ -18,11 +18,6 @@ public:
 
     Imagen generarImagen(int pixelesPorFila);
 
-    void ajustarImagen();
-
-    void mostrarImagen();
-
-    Imagen getImagen();
 };
 
 #endif //CONCURRENTES_CAMARA_H
