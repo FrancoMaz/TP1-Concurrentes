@@ -148,7 +148,7 @@ int main() {
 
     Log log = Log("output_ej1.txt", modoDebugActivado);
 
-    cout << "Loggeando en el archivo output.txt. Presiona CTRL + C para finalizar" << endl;
+    cout << "Loggeando en el archivo output_ej1.txt. Presiona CTRL + C para finalizar" << endl;
 
     log.escribirAArchivo("Comenzando el proceso con " + to_string(cantidadCamaras) + " imagenes de " + to_string(pixelesPorFila) +
     "X" + to_string(pixelesPorFila), "INFO", true);
