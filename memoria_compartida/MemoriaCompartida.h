@@ -24,19 +24,15 @@ private:
     int	cantidadProcesosAdosados() const;
 
 public:
-    MemoriaCompartida();
-    MemoriaCompartida (const string& archivo,char letra, int arraySize);
+    MemoriaCompartida (const string& archivo,char letra, size_t arraySize);
     ~MemoriaCompartida ();
     MemoriaCompartida& operator= ( const MemoriaCompartida& origen );
-    void escribir (int* dato, int offset, int arraySize );
-    int* leer (int offset, int arraySize) const;
+    void escribir (const int* dato, int offset, size_t arraySize );
+    int* leer (int offset, size_t arraySize) const;
 };
 
-MemoriaCompartida::MemoriaCompartida ():shmId(0),ptrDatos(nullptr) {
-}
-
 //Se attachea la memoria compartida en el constructor
-MemoriaCompartida::MemoriaCompartida (const string& archivo, const char letra, int size):shmId(0),ptrDatos(nullptr) {
+MemoriaCompartida::MemoriaCompartida (const string& archivo, const char letra, size_t size):shmId(0),ptrDatos(nullptr) {
     key_t clave = ftok ( archivo.c_str(),letra );
 
     if ( clave > 0 ) {
@@ -88,20 +84,20 @@ MemoriaCompartida& MemoriaCompartida::operator= ( const MemoriaCompartida& orige
 }
 
 //Se escribe byte a byte en la memoria
-void MemoriaCompartida::escribir (int* dato, int offset, int arraySize) {
+void MemoriaCompartida::escribir (const int* dato, int offset, size_t arraySize) {
 
     int contador = 0;
-    for (int i = offset; i < arraySize + offset; i++) {
+    for (size_t i = offset; i < arraySize + offset; i++) {
         *(this->ptrDatos + i*sizeof(int)) = dato[contador];
         contador++;
     }
 }
 
 //Se lee byte a byte en la memoria
-int* MemoriaCompartida::leer(int offset, int arraySize) const {
+int* MemoriaCompartida::leer(int offset, size_t arraySize) const {
     int* datosLeidos = new int[arraySize];
     int contador = 0;
-    for (int i = offset; i < arraySize + offset; i++) {
+    for (size_t  i = offset; i < arraySize + offset; i++) {
         datosLeidos[contador] = *(this->ptrDatos + i*sizeof(int));
         contador++;
     }
