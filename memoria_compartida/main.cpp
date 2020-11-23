@@ -32,12 +32,12 @@ void mostrarImagenes(vector<Imagen> imagenes, Log log) {
     }
 }
 
-int* serializarImagenes(vector<Imagen> imagenes, int pixelesPorFila, int arraySize) {
+int* serializarImagenes(vector<Imagen> imagenes, int pixelesPorFila, size_t arraySize) {
     int* imagenesSerializadas = new int[arraySize];
 
     int position = 0;
     while (position < arraySize) {
-        for (auto & imagen : imagenes) {
+        for (auto &imagen : imagenes) {
             for (int j = 0; j < pixelesPorFila * pixelesPorFila; j++) {
                 imagenesSerializadas[position] = imagen.getPixel(j);
                 position++;
@@ -49,10 +49,10 @@ int* serializarImagenes(vector<Imagen> imagenes, int pixelesPorFila, int arraySi
 
 }
 
-vector<Imagen> deserializarImagenes(int* imagenes, int pixelesPorFila, int arraySize) {
+vector<Imagen> deserializarImagenes(int* imagenes, int pixelesPorFila, size_t arraySize) {
     vector<Imagen> imagenesDeserializadas;
 
-    for (int i = 0; i < arraySize; i += (pixelesPorFila * pixelesPorFila)) {
+    for (size_t i = 0; i < arraySize; i += (pixelesPorFila * pixelesPorFila)) {
         Imagen imagen = Imagen(pixelesPorFila);
         for (int j = i; j < i + (pixelesPorFila * pixelesPorFila); j++) {
             imagen.agregarPixel(imagenes[j]);
@@ -75,7 +75,7 @@ Imagen deserializarImagen(int* imagenesASerializar, int pixelesPorFila) {
 }
 
 int* serializarImagen(Imagen imagen, int pixelesPorFila) {
-    int* imagenADevolver = new int[pixelesPorFila*pixelesPorFila];
+    int* imagenADevolver = new int[pixelesPorFila * pixelesPorFila];
 
     for (int i = 0; i < pixelesPorFila * pixelesPorFila; i++) {
         imagenADevolver[i] = imagen.getPixel(i);
