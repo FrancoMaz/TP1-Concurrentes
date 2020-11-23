@@ -52,15 +52,15 @@ void mostrarImagenes(vector<Imagen> imagenes, Log log) {
     }
 }
 
-vector<Imagen> ajustarImagenes(const vector<Imagen> imagenes, int pixelesPorFila) {
+vector<Imagen> ajustarImagenes(const vector<Imagen>& imagenes, int pixelesPorFila) {
 
-    int arraySize = pixelesPorFila * pixelesPorFila * imagenes.size();
-    int bufferSize = arraySize*sizeof(int);
+    size_t arraySize = pixelesPorFila * pixelesPorFila * imagenes.size();
+    size_t bufferSize = arraySize*sizeof(int);
     //Se utilizan 2*c archivos diferentes
     string archivo1 = "/tmp/archivo_fifo";
     string archivo2 = "/tmp/archivo_fifo_2";
 
-    auto *ajustador = new Ajustador(10);
+    Ajustador ajustador = Ajustador(10);
     vector<Imagen> imagenesAjustadas;
 
     pid_t ids[imagenes.size()];
@@ -75,7 +75,7 @@ vector<Imagen> ajustarImagenes(const vector<Imagen> imagenes, int pixelesPorFila
             canalLectura.leer(buffer, pixelesPorFila*pixelesPorFila*sizeof(int));
             //Deserialización
             Imagen imagen = deserializarImagen(buffer, pixelesPorFila);
-            ajustador->ajustarImagen(&imagen);
+            ajustador.ajustarImagen(&imagen);
             //Serialización
             int* imagenAjustada = serializarImagen(imagen, pixelesPorFila);
             canalLectura.cerrar();
@@ -84,6 +84,7 @@ vector<Imagen> ajustarImagenes(const vector<Imagen> imagenes, int pixelesPorFila
             canalEscritura.abrir();
             canalEscritura.escribir(imagenAjustada, bufferSize);
             canalEscritura.cerrar();
+            delete[] imagenAjustada;
             exit(0);
         } else {
             //Escritura
@@ -93,6 +94,7 @@ vector<Imagen> ajustarImagenes(const vector<Imagen> imagenes, int pixelesPorFila
             canalEscritura.escribir(imagenSerializada, bufferSize);
             canalEscritura.cerrar();
             canalEscritura.eliminar();
+            delete[] imagenSerializada;
         }
     }
 
@@ -172,6 +174,9 @@ int main() {
         log.escribirAArchivo("Aplanando imagenes...", "INFO");
         Imagen imagenAplanada = Aplanador::aplanarImagenes(imagenesAjustadas, pixelesPorFila);
         log.escribirAArchivo("Imagen aplanada: " + imagenAplanada.mostrar(), "DEBUG");
+
+        imagenes.clear();
+        imagenesAjustadas.clear();
     }
 
     SignalHandler::destruir();

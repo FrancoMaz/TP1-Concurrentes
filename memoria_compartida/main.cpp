@@ -75,7 +75,7 @@ Imagen deserializarImagen(int* imagenesASerializar, int pixelesPorFila) {
 }
 
 int* serializarImagen(Imagen imagen, int pixelesPorFila) {
-    int* imagenADevolver = new int[pixelesPorFila];
+    int* imagenADevolver = new int[pixelesPorFila*pixelesPorFila];
 
     for (int i = 0; i < pixelesPorFila * pixelesPorFila; i++) {
         imagenADevolver[i] = imagen.getPixel(i);
